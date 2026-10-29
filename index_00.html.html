@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>북삼로인평 골목형상점가 - 맞춤 추천 & 룰렛</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <!-- Pretendard Web Font -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandRed: '#E53935',
+                        brandPurple: '#8E24AA',
+                        brandYellow: '#FFB300',
+                        brandPink: '#D81B60',
+                        brandGreen: '#43A047',
+                        brandBlue: '#1E88E5',
+                    },
+                    fontFamily: {
+                        sans: ['Pretendard', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Pretendard', sans-serif;
+            background-color: #f8fafc;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 15px rgba(229, 57, 53, 0.4), inset 0 2px 4px rgba(255,255,255,0.6); }
+            50% { box-shadow: 0 0 28px rgba(229, 57, 53, 0.8), inset 0 2px 4px rgba(255,255,255,0.9); }
+        }
+        .animate-glow {
+            animation: pulseGlow 1.8s infinite ease-in-out;
+        }
+        @keyframes pointerBounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-5px); }
+        }
+        .animate-pointer {
+            animation: pointerBounce 0.8s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased selection:bg-rose-500 selection:text-white">
+
+    <!-- Main Container -->
+    <div id="app" class="max-w-md mx-auto bg-white min-h-screen shadow-xl relative pb-20 flex flex-col border-x border-slate-200">
+        
+        <!-- Header -->
+        <header class="sticky top-0 z-30 bg-slate-900 text-white shadow-md">
+            <div class="p-4 pb-3 flex items-center justify-between">
+                <div>
+                    <span class="inline-block bg-rose-600/90 text-white text-[10px] font-bold px-2 py-0.5 rounded-full mb-1 tracking-wider uppercase">
+                        칠곡군 골목형상점가
+                    </span>
+                    <h1 class="text-xl font-black text-white tracking-tight flex items-center gap-1.5">
+                        북삼로인평 상점가 🛍️
+                    </h1>
+                </div>
+                <button onclick="openModal('onnuriModal')" class="bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs font-black px-3 py-1.5 rounded-xl shadow-md transition transform active:scale-95 flex items-center gap-1.5">
+                    <span>🎁</span>
+                    <span>온누리 환급</span>
+                </button>
+            </div>
+            <p class="text-xs text-slate-300 px-4 pb-3">
+                우리 동네 50개 참여 점포 맞춤 검색 & 결정장애 룰렛 🎰
+            </p>
+
+            <!-- Navigation Tabs -->
+            <div class="flex border-t border-slate-800 bg-slate-950/60 p-1 gap-1">
+                <button id="tab-btn-finder" onclick="switchTab('finder')" class="flex-1 py-2.5 text-xs font-bold text-center rounded-lg bg-rose-600 text-white shadow flex items-center justify-center gap-1.5 transition">
+                    <i class="fa-solid fa-compass"></i>
+                    <span>🎯 맞춤 점포 찾기</span>
+                </button>
+                <button id="tab-btn-roulette" onclick="switchTab('roulette')" class="flex-1 py-2.5 text-xs font-bold text-center rounded-lg text-slate-400 hover:text-white flex items-center justify-center gap-1.5 transition">
+                    <i class="fa-solid fa-dice text-amber-400"></i>
+                    <span>🎰 메뉴/점포 룰렛</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Onnuri Event Quick Banner -->
+        <div onclick="openModal('onnuriModal')" class="bg-amber-50 border-b border-amber-200 px-4 py-2 flex items-center justify-between cursor-pointer hover:bg-amber-100/80 transition">
+            <div class="flex items-center gap-2 text-xs text-amber-950 font-medium truncate">
+                <span class="bg-rose-600 text-white text-[10px] font-black px-1.5 py-0.5 rounded shrink-0">100% 증정</span>
+                <span class="truncate">당일 구매 영수증으로 <b>온누리상품권</b> 환급받으세요!</span>
+            </div>
+            <i class="fa-solid fa-chevron-right text-xs text-amber-700 shrink-0"></i>
+        </div>
+
+        <!-- TAB 1: STEP FINDER -->
+        <main id="tab-finder" class="p-4 flex-1 space-y-4">
+            
+            <!-- Category Selector Chips -->
+            <div>
+                <div class="flex items-center justify-between mb-2">
+                    <h2 class="text-xs font-bold text-slate-500 uppercase tracking-wider">
+                        STEP 1. 업종 분류 선택
+                    </h2>
+                    <span id="total-count-badge" class="text-[11px] font-bold text-rose-600 bg-rose-50 px-2 py-0.5 rounded-full border border-rose-100">
+                        총 50개 점포
+                    </span>
+                </div>
+
+                <div class="grid grid-cols-3 gap-2" id="category-grid">
+                    <!-- Dynamic rendering by JS -->
+                </div>
+            </div>
+
+            <!-- Search Input -->
+            <div class="relative">
+                <input type="text" id="store-search-input" oninput="handleSearch()" placeholder="점포명 또는 도로명 주소 검색 (예: 짬뽕, 북삼로)..." class="w-full bg-slate-50 border border-slate-200 text-xs rounded-xl py-3 pl-10 pr-10 focus:outline-none focus:border-rose-500 focus:bg-white transition">
+                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-slate-400 text-sm"></i>
+                <button id="search-clear-btn" onclick="clearSearch()" class="hidden absolute right-3 top-2.5 text-slate-400 hover:text-slate-600 p-1">
+                    <i class="fa-solid fa-xmark text-sm"></i>
+                </button>
+            </div>
+
+            <!-- Store Cards Header -->
+            <div class="flex items-center justify-between pt-1">
+                <span class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
+                    <i class="fa-solid fa-store text-rose-500"></i>
+                    점포 목록 (<span id="store-count">0</span>)
+                </span>
+                <select id="sort-select" onchange="renderStoreList()" class="text-xs bg-white border border-slate-200 rounded-lg px-2 py-1 focus:outline-none text-slate-600">
+                    <option value="name">가나다순</option>
+                    <option value="category">업종별순</option>
+                </select>
+            </div>
+
+            <!-- Store List Container -->
+            <div id="store-list" class="space-y-2.5">
+                <!-- Dynamic Store Cards -->
+            </div>
+
+        </main>
+
+        <!-- TAB 2: SIMPLIFIED ROULETTE -->
+        <main id="tab-roulette" class="p-4 flex-1 hidden flex-col items-center justify-start space-y-3 text-center">
+            
+            <div class="mt-1">
+                <h2 class="text-lg font-black text-slate-900 tracking-tight">
+                    오늘 뭐 하지? 어디로 갈까? 🎲
+                </h2>
+                <p class="text-xs text-slate-500 mt-1">
+                    START 버튼을 누르면 7개 업종 중 무작위로 추천해 드립니다!
+                </p>
+            </div>
+
+            <!-- Canvas Wheel Container -->
+            <div class="relative flex flex-col items-center justify-center my-3">
+                <!-- Pointer Arrow -->
+                <div class="absolute -top-3 left-1/2 -translate-x-1/2 z-20 animate-pointer">
+                    <div class="w-0 h-0 border-x-[12px] border-x-transparent border-t-[22px] border-t-slate-900 filter drop-shadow-md"></div>
+                </div>
+
+                <!-- Canvas Wrapper -->
+                <div class="p-2 bg-white rounded-full shadow-2xl border-4 border-amber-300 relative">
+                    <canvas id="roulette-canvas" width="310" height="310" class="rounded-full"></canvas>
+                </div>
+
+                <!-- Enlarged Center START Button (96px Diameter) -->
+                <button id="spin-btn" onclick="spinRoulette()" class="absolute z-10 w-24 h-24 bg-gradient-to-tr from-red-600 via-rose-600 to-rose-500 text-white border-4 border-white rounded-full shadow-2xl font-black text-base flex flex-col items-center justify-center gap-0.5 transition transform active:scale-90 hover:scale-105 animate-glow">
+                    <span class="text-lg leading-none tracking-tight">START</span>
+                    <span class="text-[10px] font-bold opacity-90">돌리기!</span>
+                </button>
+            </div>
+
+            <!-- Legend Info Bar -->
+            <div class="w-full bg-slate-50 border border-slate-200 rounded-2xl p-3 text-left space-y-2">
+                <h3 class="text-xs font-bold text-slate-700 flex items-center gap-1">
+                    <i class="fa-solid fa-circle-info text-amber-500"></i>
+                    룰렛 슬라이스 구성 (7개 카테고리)
+                </h3>
+                <div class="grid grid-cols-2 gap-1.5 text-[11px] text-slate-600">
+                    <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-slate-800"></span>🎲 전체 무작위 (50곳)</div>
+                    <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-red-600"></span>🔴 음식점 (24곳)</div>
+                    <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-purple-600"></span>🟣 치킨/주점/야식 (6곳)</div>
+                    <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>🟡 카페/분식 (6곳)</div>
+                    <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-pink-600"></span>🌸 뷰티/미용 (4곳)</div>
+                    <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-emerald-600"></span>🟢 편의점 (3곳)</div>
+                    <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span>🔵 생활/서비스 (7곳)</div>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white border-t border-slate-200 px-4 py-2.5 z-20 flex items-center justify-between text-slate-600 text-xs shadow-lg">
+            <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span class="font-bold text-slate-800">북삼로인평 상인회 공식</span>
+            </div>
+            <button onclick="openModal('onnuriModal')" class="text-xs font-bold text-rose-600 hover:underline flex items-center gap-1">
+                <i class="fa-solid fa-gift"></i>
+                행사 내용보기
+            </button>
+        </footer>
+
+    </div>
+
+    <!-- MODAL 1: WINNER RESULT MODAL -->
+    <div id="winnerModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-sm rounded-3xl p-6 shadow-2xl relative text-center transform transition-all duration-300 scale-95 opacity-0" id="winner-modal-content">
+            <button onclick="closeModal('winnerModal')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-1">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <div class="w-16 h-16 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center text-3xl mx-auto mb-3 shadow-inner">
+                🎉
+            </div>
+
+            <span class="inline-block bg-rose-100 text-rose-700 font-bold text-xs px-3 py-1 rounded-full mb-2" id="winner-badge">
+                음식점
+            </span>
+
+            <h3 class="text-2xl font-black text-slate-900 mb-1" id="winner-name">
+                경화추어탕
+            </h3>
+
+            <p class="text-xs text-slate-500 mb-5 flex items-center justify-center gap-1" id="winner-address">
+                <i class="fa-solid fa-location-dot text-rose-500"></i>
+                칠곡군 북삼읍 북삼로 95
+            </p>
+
+            <div class="space-y-2">
+                <a id="winner-naver-link" href="#" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-4 rounded-xl text-xs flex items-center justify-center gap-2 shadow-md transition">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                    네이버 지도로 위치 확인하기
+                </a>
+                
+                <button onclick="spinRoulette(); closeModal('winnerModal');" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-2.5 px-4 rounded-xl text-xs transition">
+                    🔄 룰렛 다시 돌리기
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: ONNURI EVENT INFO MODAL -->
+    <div id="onnuriModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-sm rounded-3xl p-6 shadow-2xl relative text-left">
+            <button onclick="closeModal('onnuriModal')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-1">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <div class="text-center mb-4">
+                <span class="bg-rose-600 text-white font-black text-[10px] px-2.5 py-1 rounded-full uppercase tracking-wider">SPECIAL EVENT</span>
+                <h3 class="text-lg font-black text-slate-900 mt-1">
+                    🎁 온누리상품권 환급 행사
+                </h3>
+                <p class="text-xs text-slate-500">북삼로인평 골목형상점가 고객 감사 이벤트</p>
+            </div>
+
+            <div class="space-y-3 text-xs text-slate-700">
+                <div class="bg-amber-50 p-3 rounded-2xl border border-amber-200">
+                    <h4 class="font-bold text-amber-900 flex items-center gap-1.5 mb-1">
+                        <i class="fa-solid fa-coins text-amber-600"></i>
+                        행사 내용
+                    </h4>
+                    <p class="text-slate-600 leading-relaxed">
+                        상점가 내 50개 참여 가맹점에서 당일 구매하신 영수증을 지참하시면 **온누리상품권**으로 즉시 환급해 드립니다!
+                    </p>
+                </div>
+
+                <div class="bg-slate-50 p-3 rounded-2xl border border-slate-200 space-y-1">
+                    <p><b>📍 대상:</b> 북삼로인평 골목형상점가 50개 가맹점</p>
+                    <p><b>💰 예산:</b> 총 5,500,000원 (소진 시 조기 마감)</p>
+                    <p><b>📄 필수 지참:</b> 당일 구매 영수증</p>
+                </div>
+
+                <div class="text-[11px] text-slate-500 leading-normal bg-rose-50 p-2.5 rounded-xl border border-rose-100">
+                    ⚠️ 본 행사는 예산 소진 시까지 선착순 운영되며, 세부 교환 장소는 현장안내를 참고하세요.
+                </div>
+            </div>
+
+            <button onclick="closeModal('onnuriModal')" class="w-full mt-4 bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 rounded-xl text-xs shadow-md transition">
+                확인했습니다
+            </button>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-16 left-1/2 transform -translate-x-1/2 bg-slate-900/95 text-white text-xs px-4 py-2.5 rounded-full shadow-2xl transition duration-300 opacity-0 pointer-events-none z-50 flex items-center gap-2">
+        <i class="fa-solid fa-circle-check text-emerald-400"></i>
+        <span id="toast-message">주소가 복사되었습니다.</span>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // 1. STORE DATABASE (50 STORES)
+        const stores = [
+            // 음식점 (24)
+            { name: '경화추어탕', category: 'food', subcat: '한식/추어탕', address: '북삼로 95', tel: '054-972-0001' },
+            { name: '교동짬뽕', category: 'food', subcat: '중식/짬뽕', address: '북삼로5길 2', tel: '054-973-0002' },
+            { name: '김가네푸줏간화로구이', category: 'food', subcat: '고기/화로구이', address: '북삼로 150', tel: '054-974-0003' },
+            { name: '대구왕뽈찜', category: 'food', subcat: '해산물/뽈찜', address: '북삼로 146', tel: '054-975-0004' },
+            { name: '대한곱창', category: 'food', subcat: '고기/곱창', address: '북삼로 92', tel: '054-976-0005' },
+            { name: '만기수산셀프매장', category: 'food', subcat: '해산물/수산', address: '북삼로 58', tel: '054-977-0006' },
+            { name: '미성숯불', category: 'food', subcat: '고기/숯불구이', address: '북삼로 136', tel: '054-978-0007' },
+            { name: '바다양푼이동태탕', category: 'food', subcat: '해산물/동태탕', address: '북삼로 156', tel: '054-979-0008' },
+            { name: '배가네 횟집', category: 'food', subcat: '해산물/회', address: '북삼로 113', tel: '054-971-0009' },
+            { name: '북삼언니네집', category: 'food', subcat: '한식/식사', address: '안산3길 33', tel: '054-972-0010' },
+            { name: '삼백초', category: 'food', subcat: '한식/식사', address: '인강6길 1', tel: '054-973-0011' },
+            { name: '시골막창', category: 'food', subcat: '고기/막창', address: '북삼로 121', tel: '054-974-0012' },
+            { name: '쏴라막창', category: 'food', subcat: '고기/막창', address: '북삼로 45', tel: '054-975-0013' },
+            { name: '양포생아구', category: 'food', subcat: '해산물/아구찜', address: '북삼로 58', tel: '054-976-0014' },
+            { name: '오늘은족발먹는날', category: 'food', subcat: '고기/족발', address: '북삼로 158', tel: '054-977-0015' },
+            { name: '왕돌한판생삼겹', category: 'food', subcat: '고기/삼겹살', address: '북삼로 153-1', tel: '054-978-0016' },
+            { name: '우리동네막창', category: 'food', subcat: '고기/막창', address: '북삼로 123-1', tel: '054-979-0017' },
+            { name: '작은식탁', category: 'food', subcat: '한식/식사', address: '북삼로 52', tel: '054-971-0018' },
+            { name: '정백정참숯구이북삼본점', category: 'food', subcat: '고기/숯불구이', address: '북삼로 88', tel: '054-972-0019' },
+            { name: '착한쭈꾸미', category: 'food', subcat: '해산물/쭈꾸미', address: '북삼로 154', tel: '054-973-0020' },
+            { name: '폭탄돼지구이', category: 'food', subcat: '고기/돼지구이', address: '북삼로 80-1', tel: '054-974-0021' },
+            { name: '한가네코다리', category: 'food', subcat: '해산물/코다리', address: '북삼로 144', tel: '054-975-0022' },
+            { name: '한돈참숯고기', category: 'food', subcat: '고기/참숯고기', address: '북삼로 86', tel: '054-976-0023' },
+            { name: '한라숯불꼼장어생삼겹', category: 'food', subcat: '고기/꼼장어', address: '북삼로 41', tel: '054-977-0024' },
+
+            // 치킨/주점/야식 (6)
+            { name: 'BBQ', category: 'pub', subcat: '치킨', address: '북삼로11길 8', tel: '054-978-0025' },
+            { name: '김경옥닭발', category: 'pub', subcat: '야식/닭발', address: '북삼로3길 3', tel: '054-979-0026' },
+            { name: '노랑통닭', category: 'pub', subcat: '치킨', address: '북삼로 96', tel: '054-971-0027' },
+            { name: '달뜨는밤', category: 'pub', subcat: '주점/포차', address: '인강8길 32', tel: '054-972-0028' },
+            { name: '작은술집이야기', category: 'pub', subcat: '주점/포차', address: '인강8길 12', tel: '054-973-0029' },
+            { name: '청춘비어', category: 'pub', subcat: '주점/맥주', address: '북삼로 153-1', tel: '054-974-0030' },
+
+            // 카페/분식/디저트 (6)
+            { name: '달그릇공방', category: 'cafe', subcat: '카페/디저트', address: '북삼로 50', tel: '054-975-0031' },
+            { name: '라온', category: 'cafe', subcat: '카페/디저트', address: '인강3길 10', tel: '054-976-0032' },
+            { name: '세프라면&티타임커피', category: 'cafe', subcat: '분식/커피', address: '북삼로 116', tel: '054-977-0033' },
+            { name: '이플', category: 'cafe', subcat: '카페/디저트', address: '인강8길 32', tel: '054-978-0034' },
+            { name: '정우네분식당', category: 'cafe', subcat: '분식/간식', address: '안산3길 33', tel: '054-979-0035' },
+            { name: '플루메리아', category: 'cafe', subcat: '카페/디저트', address: '인강3길 10', tel: '054-971-0036' },
+
+            // 뷰티/미용 (4)
+            { name: '네일하트', category: 'beauty', subcat: '네일/뷰티', address: '북삼로 118', tel: '054-972-0037' },
+            { name: '레코드펌', category: 'beauty', subcat: '헤어', address: '인강1길 81', tel: '054-973-0038' },
+            { name: '토모헤어샵', category: 'beauty', subcat: '헤어', address: '인강4길 9', tel: '054-974-0039' },
+            { name: '하모니헤어', category: 'beauty', subcat: '헤어', address: '안산3길 33', tel: '054-975-0040' },
+
+            // 편의점 (3)
+            { name: 'CU북삼행복점', category: 'cvs', subcat: '편의점', address: '북삼로 124', tel: '054-976-0041' },
+            { name: 'GS25북삼인평공원점', category: 'cvs', subcat: '편의점', address: '북삼로 47', tel: '054-977-0042' },
+            { name: 'GS25북삼인평점', category: 'cvs', subcat: '편의점', address: '북삼로11길 50', tel: '054-978-0043' },
+
+            // 생활/서비스/정비 (7)
+            { name: '강진종합철물', category: 'service', subcat: '생활/철물', address: '북삼로 167', tel: '054-979-0044' },
+            { name: '나운재가노인복지센터', category: 'service', subcat: '복지/서비스', address: '북삼로 112', tel: '054-971-0045' },
+            { name: '대왕카정비', category: 'service', subcat: '정비/카센터', address: '북삼로 43', tel: '054-972-0046' },
+            { name: '두산광고', category: 'service', subcat: '디자인/광고', address: '북삼로 90', tel: '054-973-0047' },
+            { name: '마마운동화이불빨래방', category: 'service', subcat: '세탁/클리닝', address: '안산3길 33', tel: '054-974-0048' },
+            { name: '위더스컴퓨터', category: 'service', subcat: '수리/컴퓨터', address: '북삼로 118', tel: '054-975-0049' },
+            { name: '◇◇상회 (신규참여)', category: 'service', subcat: '생활/서비스', address: '북삼로 일원', tel: '054-976-0050' }
+        ];
+
+        // Categories Metadata
+        const categoryMeta = {
+            all: { name: '전체', icon: '🏪', count: 50, color: '#1E293B', badgeColor: 'bg-slate-100 text-slate-800' },
+            food: { name: '음식점', icon: '🔴', count: 24, color: '#E53935', badgeColor: 'bg-red-100 text-red-700 border-red-200' },
+            pub: { name: '치킨/주점', icon: '🟣', count: 6, color: '#8E24AA', badgeColor: 'bg-purple-100 text-purple-700 border-purple-200' },
+            cafe: { name: '카페/분식', icon: '🟡', count: 6, color: '#FFB300', badgeColor: 'bg-amber-100 text-amber-800 border-amber-200' },
+            beauty: { name: '뷰티/미용', icon: '🌸', count: 4, color: '#D81B60', badgeColor: 'bg-pink-100 text-pink-700 border-pink-200' },
+            cvs: { name: '편의점', icon: '🟢', count: 3, color: '#43A047', badgeColor: 'bg-emerald-100 text-emerald-700 border-emerald-200' },
+            service: { name: '생활/서비스', icon: '🔵', count: 7, color: '#1E88E5', badgeColor: 'bg-blue-100 text-blue-700 border-blue-200' }
+        };
+
+        // Simplified 7 Roulette Slices
+        const rouletteSlices = [
+            { id: 'all', name: '전체 무작위', color: '#1E293B', icon: '🎲' },
+            { id: 'food', name: '음식점', color: '#E53935', icon: '🍲' },
+            { id: 'pub', name: '치킨/주점', color: '#8E24AA', icon: '🍺' },
+            { id: 'cafe', name: '카페/분식', color: '#FFB300', icon: '☕' },
+            { id: 'beauty', name: '뷰티/미용', color: '#D81B60', icon: '✂️' },
+            { id: 'cvs', name: '편의점', color: '#43A047', icon: '🏪' },
+            { id: 'service', name: '생활/서비스', color: '#1E88E5', icon: '🔧' }
+        ];
+
+        // State Variables
+        let currentCategory = 'all';
+        let searchQuery = '';
+
+        // DOM Initialization
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCategoryChips();
+            renderStoreList();
+            initRouletteWheel();
+        });
+
+        // Tab Switcher
+        function switchTab(tab) {
+            playAudio('click');
+            const finderTab = document.getElementById('tab-finder');
+            const rouletteTab = document.getElementById('tab-roulette');
+            const btnFinder = document.getElementById('tab-btn-finder');
+            const btnRoulette = document.getElementById('tab-btn-roulette');
+
+            if (tab === 'finder') {
+                finderTab.classList.remove('hidden');
+                rouletteTab.classList.add('hidden');
+                rouletteTab.classList.remove('flex');
+                btnFinder.className = "flex-1 py-2.5 text-xs font-bold text-center rounded-lg bg-rose-600 text-white shadow flex items-center justify-center gap-1.5 transition";
+                btnRoulette.className = "flex-1 py-2.5 text-xs font-bold text-center rounded-lg text-slate-400 hover:text-white flex items-center justify-center gap-1.5 transition";
+            } else {
+                finderTab.classList.add('hidden');
+                rouletteTab.classList.remove('hidden');
+                rouletteTab.classList.add('flex');
+                btnFinder.className = "flex-1 py-2.5 text-xs font-bold text-center rounded-lg text-slate-400 hover:text-white flex items-center justify-center gap-1.5 transition";
+                btnRoulette.className = "flex-1 py-2.5 text-xs font-bold text-center rounded-lg bg-rose-600 text-white shadow flex items-center justify-center gap-1.5 transition";
+                
+                setTimeout(() => {
+                    initRouletteWheel();
+                }, 50);
+            }
+        }
+
+        // Render Category Filter Chips
+        function renderCategoryChips() {
+            const grid = document.getElementById('category-grid');
+            grid.innerHTML = '';
+
+            const keys = ['all', 'food', 'pub', 'cafe', 'beauty', 'cvs', 'service'];
+
+            keys.forEach(k => {
+                const meta = categoryMeta[k];
+                const isActive = (currentCategory === k);
+                const btn = document.createElement('button');
+                
+                btn.className = `p-2.5 rounded-2xl flex flex-col items-center justify-center gap-0.5 border transition transform active:scale-95 text-center ${
+                    isActive 
+                    ? 'border-2 border-rose-600 bg-rose-50/50 shadow-sm' 
+                    : 'border-slate-200 bg-white hover:border-slate-300'
+                }`;
+                btn.onclick = () => selectCategory(k);
+                
+                btn.innerHTML = `
+                    <div class="text-base">${meta.icon}</div>
+                    <span class="text-xs font-bold text-slate-800">${meta.name}</span>
+                    <span class="text-[10px] text-slate-400">${meta.count}곳</span>
+                `;
+                grid.appendChild(btn);
+            });
+        }
+
+        function selectCategory(cat) {
+            playAudio('click');
+            currentCategory = cat;
+            renderCategoryChips();
+            renderStoreList();
+        }
+
+        function handleSearch() {
+            const input = document.getElementById('store-search-input');
+            const clearBtn = document.getElementById('search-clear-btn');
+            searchQuery = input.value.trim().toLowerCase();
+
+            if (searchQuery.length > 0) {
+                clearBtn.classList.remove('hidden');
+            } else {
+                clearBtn.classList.add('hidden');
+            }
+            renderStoreList();
+        }
+
+        function clearSearch() {
+            const input = document.getElementById('store-search-input');
+            input.value = '';
+            searchQuery = '';
+            document.getElementById('search-clear-btn').classList.add('hidden');
+            renderStoreList();
+        }
+
+        // Render Store Cards
+        function renderStoreList() {
+            const listEl = document.getElementById('store-list');
+            const countEl = document.getElementById('store-count');
+            const sortMode = document.getElementById('sort-select').value;
+
+            let filtered = stores.filter(store => {
+                if (currentCategory !== 'all' && store.category !== currentCategory) {
+                    return false;
+                }
+                if (searchQuery) {
+                    const nameMatch = store.name.toLowerCase().includes(searchQuery);
+                    const addrMatch = store.address.toLowerCase().includes(searchQuery);
+                    const subMatch = store.subcat.toLowerCase().includes(searchQuery);
+                    return nameMatch || addrMatch || subMatch;
+                }
+                return true;
+            });
+
+            if (sortMode === 'name') {
+                filtered.sort((a, b) => a.name.localeCompare(b.name, 'ko'));
+            } else if (sortMode === 'category') {
+                filtered.sort((a, b) => a.category.localeCompare(b.category));
+            }
+
+            countEl.textContent = filtered.length;
+            listEl.innerHTML = '';
+
+            if (filtered.length === 0) {
+                listEl.innerHTML = `
+                    <div class="text-center py-10 bg-slate-50 rounded-2xl border border-dashed border-slate-200">
+                        <div class="text-3xl mb-2">🔍</div>
+                        <p class="text-xs text-slate-500 font-medium">검색 결과가 없습니다.</p>
+                        <button onclick="clearSearch(); selectCategory('all');" class="mt-2 text-xs text-rose-600 font-bold underline">
+                            전체 50개 점포 보기
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+
+            filtered.forEach(store => {
+                const meta = categoryMeta[store.category] || categoryMeta.all;
+                const naverMapUrl = `https://map.naver.com/v5/search/${encodeURIComponent('칠곡군 북삼읍 ' + store.name)}`;
+                
+                const card = document.createElement('div');
+                card.className = "bg-white p-3.5 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition flex flex-col gap-2";
+                card.innerHTML = `
+                    <div class="flex items-start justify-between">
+                        <div class="space-y-1">
+                            <div class="flex items-center gap-1.5">
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded-md border ${meta.badgeColor}">
+                                    ${meta.icon} ${store.subcat}
+                                </span>
+                            </div>
+                            <h3 class="text-base font-bold text-slate-900 tracking-tight">
+                                ${store.name}
+                            </h3>
+                            <p class="text-xs text-slate-500 flex items-center gap-1">
+                                <i class="fa-solid fa-location-dot text-rose-500 text-[11px]"></i>
+                                <span>칠곡군 북삼읍 ${store.address}</span>
+                                <button onclick="copyAddress('칠곡군 북삼읍 ${store.address}')" class="text-[10px] text-slate-400 hover:text-slate-600 underline ml-1">
+                                    복사
+                                </button>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-2 pt-1 border-t border-slate-100">
+                        <a href="tel:${store.tel}" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold py-2 rounded-xl text-center flex items-center justify-center gap-1 transition">
+                            <i class="fa-solid fa-phone text-emerald-600"></i>
+                            전화 문의
+                        </a>
+                        <a href="${naverMapUrl}" target="_blank" class="flex-1 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 text-xs font-bold py-2 rounded-xl text-center flex items-center justify-center gap-1 border border-emerald-200 transition">
+                            <i class="fa-solid fa-map-location-dot text-emerald-600"></i>
+                            네이버 지도
+                        </a>
+                    </div>
+                `;
+                listEl.appendChild(card);
+            });
+        }
+
+        // ==========================================
+        // CANVAS ROULETTE ENGINE (7 SLICES)
+        // ==========================================
+        let startAngle = 0;
+        let arc = (2 * Math.PI) / rouletteSlices.length;
+        let spinTimeout = null;
+        let spinAngleStart = 10;
+        let spinTime = 0;
+        let spinTimeTotal = 0;
+        let isSpinning = false;
+
+        function initRouletteWheel() {
+            drawRouletteWheel();
+        }
+
+        function drawRouletteWheel() {
+            const canvas = document.getElementById('roulette-canvas');
+            if (!canvas.getContext) return;
+            const ctx = canvas.getContext('2d');
+            const outsideRadius = 145;
+            const textRadius = 100;
+            const insideRadius = 45; // Leave room for enlarged center button
+
+            ctx.clearRect(0, 0, 310, 310);
+
+            ctx.strokeStyle = '#FFFFFF';
+            ctx.lineWidth = 3;
+
+            for (let i = 0; i < rouletteSlices.length; i++) {
+                const angle = startAngle + i * arc;
+                const slice = rouletteSlices[i];
+                
+                ctx.fillStyle = slice.color;
+
+                ctx.beginPath();
+                ctx.arc(155, 155, outsideRadius, angle, angle + arc, false);
+                ctx.arc(155, 155, insideRadius, angle + arc, angle, true);
+                ctx.stroke();
+                ctx.fill();
+
+                ctx.save();
+                ctx.fillStyle = '#FFFFFF';
+                ctx.shadowColor = 'rgba(0,0,0,0.4)';
+                ctx.shadowBlur = 3;
+                ctx.font = 'bold 12px Pretendard';
+                ctx.translate(
+                    155 + Math.cos(angle + arc / 2) * textRadius,
+                    155 + Math.sin(angle + arc / 2) * textRadius
+                );
+                ctx.rotate(angle + arc / 2 + Math.PI / 2);
+                
+                const text = `${slice.icon} ${slice.name}`;
+                ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
+                ctx.restore();
+            }
+        }
+
+        function spinRoulette() {
+            if (isSpinning) return;
+            playAudio('click');
+            isSpinning = true;
+
+            spinAngleStart = Math.random() * 10 + 12;
+            spinTime = 0;
+            spinTimeTotal = Math.random() * 2500 + 3500; // 3.5 ~ 6 seconds
+            rotateWheel();
+        }
+
+        function rotateWheel() {
+            spinTime += 20;
+            if (spinTime >= spinTimeTotal) {
+                stopRotateWheel();
+                return;
+            }
+
+            if (Math.floor(spinTime / 100) % 2 === 0) {
+                playAudio('tick');
+            }
+
+            const spinAngle = spinAngleStart - easeOut(spinTime, 0, spinAngleStart, spinTimeTotal);
+            startAngle += (spinAngle * Math.PI / 180);
+            drawRouletteWheel();
+            spinTimeout = setTimeout(rotateWheel, 20);
+        }
+
+        function stopRotateWheel() {
+            clearTimeout(spinTimeout);
+            isSpinning = false;
+
+            const degrees = startAngle * 180 / Math.PI + 90;
+            const arcd = arc * 180 / Math.PI;
+            const index = Math.floor((360 - degrees % 360) / arcd);
+
+            const winningSlice = rouletteSlices[index] || rouletteSlices[0];
+
+            // Pick a random store from candidate category
+            let candidates = [];
+            if (winningSlice.id === 'all') {
+                candidates = stores;
+            } else {
+                candidates = stores.filter(s => s.category === winningSlice.id);
+            }
+
+            const randomStore = candidates[Math.floor(Math.random() * candidates.length)];
+            showWinnerModal(randomStore, winningSlice);
+        }
+
+        function easeOut(t, b, c, d) {
+            const ts = (t /= d) * t;
+            const tc = ts * t;
+            return b + c * (tc + -3 * ts + 3 * t);
+        }
+
+        // Winner Modal Trigger
+        function showWinnerModal(store, slice) {
+            playAudio('win');
+
+            confetti({
+                particleCount: 90,
+                spread: 80,
+                origin: { y: 0.6 }
+            });
+
+            const meta = categoryMeta[store.category] || categoryMeta.all;
+
+            document.getElementById('winner-name').textContent = store.name;
+            document.getElementById('winner-badge').textContent = `${slice.icon} ${slice.name} 당첨!`;
+            document.getElementById('winner-badge').className = `inline-block font-bold text-xs px-3.5 py-1 rounded-full mb-2 ${meta.badgeColor}`;
+            document.getElementById('winner-address').innerHTML = `<i class="fa-solid fa-location-dot text-rose-500"></i> 칠곡군 북삼읍 ${store.address}`;
+            document.getElementById('winner-naver-link').href = `https://map.naver.com/v5/search/${encodeURIComponent('칠곡군 북삼읍 ' + store.name)}`;
+
+            openModal('winnerModal');
+        }
+
+        // Modal Helpers
+        function openModal(id) {
+            playAudio('click');
+            const modal = document.getElementById(id);
+            modal.classList.remove('hidden');
+            if (id === 'winnerModal') {
+                const content = document.getElementById('winner-modal-content');
+                setTimeout(() => {
+                    content.classList.remove('scale-95', 'opacity-0');
+                    content.classList.add('scale-100', 'opacity-100');
+                }, 10);
+            }
+        }
+
+        function closeModal(id) {
+            playAudio('click');
+            const modal = document.getElementById(id);
+            if (id === 'winnerModal') {
+                const content = document.getElementById('winner-modal-content');
+                content.classList.remove('scale-100', 'opacity-100');
+                content.classList.add('scale-95', 'opacity-0');
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                }, 200);
+            } else {
+                modal.classList.add('hidden');
+            }
+        }
+
+        // Copy Address Toast
+        function copyAddress(text) {
+            playAudio('click');
+            const dummy = document.createElement("textarea");
+            document.body.appendChild(dummy);
+            dummy.value = text;
+            dummy.select();
+            document.execCommand("copy");
+            document.body.removeChild(dummy);
+
+            showToast("주소가 클립보드에 복사되었습니다.");
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-message').textContent = msg;
+            toast.classList.remove('opacity-0', 'pointer-events-none');
+            
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'pointer-events-none');
+            }, 2200);
+        }
+
+        // Web Audio Synthesizer
+        let audioCtx = null;
+
+        function playAudio(type) {
+            try {
+                if (!audioCtx) {
+                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+
+                const now = audioCtx.currentTime;
+
+                if (type === 'click') {
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(600, now);
+                    osc.frequency.exponentialRampToValueAtTime(200, now + 0.05);
+                    gain.gain.setValueAtTime(0.12, now);
+                    gain.gain.linearRampToValueAtTime(0, now + 0.05);
+                    osc.start(now);
+                    osc.stop(now + 0.05);
+                } else if (type === 'tick') {
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(450, now);
+                    gain.gain.setValueAtTime(0.08, now);
+                    gain.gain.linearRampToValueAtTime(0, now + 0.02);
+                    osc.start(now);
+                    osc.stop(now + 0.02);
+                } else if (type === 'win') {
+                    const notes = [523.25, 659.25, 783.99, 1046.50];
+                    notes.forEach((freq, idx) => {
+                        const subOsc = audioCtx.createOscillator();
+                        const subGain = audioCtx.createGain();
+                        subOsc.connect(subGain);
+                        subGain.connect(audioCtx.destination);
+
+                        subOsc.type = 'sine';
+                        subOsc.frequency.setValueAtTime(freq, now + idx * 0.08);
+                        subGain.gain.setValueAtTime(0.12, now + idx * 0.08);
+                        subGain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.08 + 0.5);
+
+                        subOsc.start(now + idx * 0.08);
+                        subOsc.stop(now + idx * 0.08 + 0.5);
+                    });
+                }
+            } catch (e) {
+                // Ignore audio errors
+            }
+        }
+    </script>
+</body>
+</html>
