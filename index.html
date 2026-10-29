@@ -110,7 +110,6 @@
 
         <!-- TAB 1: STEP FINDER -->
         <main id="tab-finder" class="p-4 flex-1 space-y-4">
-            
             <!-- Category Selector Chips -->
             <div>
                 <div class="flex items-center justify-between mb-2">
@@ -152,57 +151,53 @@
             <div id="store-list" class="space-y-2.5">
                 <!-- Dynamic Store Cards -->
             </div>
-
         </main>
 
-        <!-- TAB 2: SIMPLIFIED ROULETTE -->
+        <!-- TAB 2: SIMPLIFIED ROULETTE WITH CATEGORY SELECTOR -->
         <main id="tab-roulette" class="p-4 flex-1 hidden flex-col items-center justify-start space-y-3 text-center">
-            
             <div class="mt-1">
                 <h2 class="text-lg font-black text-slate-900 tracking-tight">
                     오늘 뭐 하지? 어디로 갈까? 🎲
                 </h2>
                 <p class="text-xs text-slate-500 mt-1">
-                    START 버튼을 누르면 고객님께 가장 알맞은 점포를 추천해 드립니다!
+                    원하는 업종을 먼저 선택한 후 START 버튼을 눌러보세요!
                 </p>
             </div>
-
+        
+            <!-- 카테고리 사전 선택 드롭다운 -->
+            <div class="w-full max-w-xs my-1">
+                <label for="roulette-cat-select" class="block text-xs font-bold text-slate-600 mb-1 text-left">
+                    🎯 룰렛을 돌릴 업종 카테고리 선택
+                </label>
+                <select id="roulette-cat-select" onchange="onRouletteCatChange()" class="w-full bg-slate-50 border-2 border-slate-900 text-xs font-extrabold rounded-xl py-2.5 px-3 focus:outline-none text-slate-900 shadow-sm">
+                    <option value="all">🎲 전체 무작위 (49곳)</option>
+                    <option value="food">🔴 음식점 (26곳)</option>
+                    <option value="pub">🟣 치킨/주점/야식 (6곳)</option>
+                    <option value="cafe">🟡 카페/분식 (3곳)</option>
+                    <option value="beauty">🌸 뷰티/미용 (4곳)</option>
+                    <option value="cvs">🟢 편의점 (3곳)</option>
+                    <option value="service">🔵 생활/서비스 (7곳)</option>
+                </select>
+            </div>
+        
             <!-- Canvas Wheel Container -->
-            <div class="relative flex flex-col items-center justify-center my-3">
+            <div class="relative flex flex-col items-center justify-center my-2">
                 <!-- Pointer Arrow -->
                 <div class="absolute -top-3 left-1/2 -translate-x-1/2 z-20 animate-pointer">
                     <div class="w-0 h-0 border-x-[12px] border-x-transparent border-t-[22px] border-t-slate-900 filter drop-shadow-md"></div>
                 </div>
-
+        
                 <!-- Canvas Wrapper -->
                 <div class="p-2 bg-white rounded-full shadow-2xl border-4 border-amber-300 relative">
                     <canvas id="roulette-canvas" width="310" height="310" class="rounded-full"></canvas>
                 </div>
-
+        
                 <!-- Enlarged Center START Button (96px Diameter) -->
                 <button id="spin-btn" onclick="spinRoulette()" class="absolute z-10 w-24 h-24 bg-gradient-to-tr from-red-600 via-rose-600 to-rose-500 text-white border-4 border-white rounded-full shadow-2xl font-black text-base flex flex-col items-center justify-center gap-0.5 transition transform active:scale-90 hover:scale-105 animate-glow">
                     <span class="text-lg leading-none tracking-tight">START</span>
                     <span class="text-[10px] font-bold opacity-90">돌리기!</span>
                 </button>
             </div>
-
-            <!-- Legend Info Bar -->
-            <div class="w-full bg-slate-50 border border-slate-200 rounded-2xl p-3 text-left space-y-2">
-                <h3 class="text-xs font-bold text-slate-700 flex items-center gap-1">
-                    <i class="fa-solid fa-circle-info text-amber-500"></i>
-                    룰렛 슬라이스 구성 (7개 카테고리)
-                </h3>
-                <div class="grid grid-cols-2 gap-1.5 text-[11px] text-slate-600">
-                    <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-slate-800"></span>🎲 전체 무작위 (49곳)</div>
-                    <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-red-600"></span>🔴 음식점 (26곳)</div>
-                    <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-purple-600"></span>🟣 치킨/주점/야식 (6곳)</div>
-                    <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>🟡 카페/분식 (3곳)</div>
-                    <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-pink-600"></span>🌸 뷰티/미용 (4곳)</div>
-                    <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-emerald-600"></span>🟢 편의점 (3곳)</div>
-                    <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span>🔵 생활/서비스 (7곳)</div>
-                </div>
-            </div>
-
         </main>
 
         <!-- Footer -->
@@ -336,7 +331,7 @@
             { name: '정백정참숯구이', category: 'food', subcat: '고기/구이', address: '북삼로 88', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/1163822476?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291627%26locale%3Dko%26svcName%3Dmap_pcv5' },
             { name: '참숯폭탄돼지구이', category: 'food', subcat: '고기/구이', address: '북삼로 80-1', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/1781854843?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291628%26locale%3Dko%26svcName%3Dmap_pcv5' },
             { name: '한가네코다리', category: 'food', subcat: '해산물/코다리', address: '북삼로 144', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/1086211345?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291630%26locale%3Dko%26svcName%3Dmap_pcv5' },
-            { name: '한돈참숯기', category: 'food', subcat: '고기/구이', address: '북삼로 86', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/37182937?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291630%26locale%3Dko%26svcName%3Dmap_pcv5' },
+            { name: '한돈참숯꼬기', category: 'food', subcat: '고기/구이', address: '북삼로 86', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/37182937?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291630%26locale%3Dko%26svcName%3Dmap_pcv5' },
             { name: '한라숯불꼼장어생삼겹', category: 'food', subcat: '고기/구이', address: '북삼로 41', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/1810086430?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291630%26locale%3Dko%26svcName%3Dmap_pcv5' },
 
             // 치킨/주점/야식 (6)
@@ -384,17 +379,6 @@
             service: { name: '생활/서비스', icon: '🔵', count: 7, color: '#1E88E5', badgeColor: 'bg-blue-100 text-blue-700 border-blue-200' }
         };
 
-        // Simplified 7 Roulette Slices
-        const rouletteSlices = [
-            { id: 'all', name: '전체 무작위', color: '#1E293B', icon: '🎲' },
-            { id: 'food', name: '음식점', color: '#E53935', icon: '🍲' },
-            { id: 'pub', name: '치킨/주점', color: '#8E24AA', icon: '🍺' },
-            { id: 'cafe', name: '카페/분식', color: '#FFB300', icon: '☕' },
-            { id: 'beauty', name: '뷰티/미용', color: '#D81B60', icon: '✂️' },
-            { id: 'cvs', name: '편의점', color: '#43A047', icon: '🏪' },
-            { id: 'service', name: '생활/서비스', color: '#1E88E5', icon: '🔧' }
-        ];
-
         // State Variables
         let currentCategory = 'all';
         let searchQuery = '';
@@ -436,6 +420,7 @@
         // Render Category Filter Chips
         function renderCategoryChips() {
             const grid = document.getElementById('category-grid');
+            if (!grid) return;
             grid.innerHTML = '';
 
             const keys = ['all', 'food', 'pub', 'cafe', 'beauty', 'cvs', 'service'];
@@ -483,9 +468,10 @@
 
         function clearSearch() {
             const input = document.getElementById('store-search-input');
-            input.value = '';
+            if (input) input.value = '';
             searchQuery = '';
-            document.getElementById('search-clear-btn').classList.add('hidden');
+            const clearBtn = document.getElementById('search-clear-btn');
+            if (clearBtn) clearBtn.classList.add('hidden');
             renderStoreList();
         }
 
@@ -493,7 +479,10 @@
         function renderStoreList() {
             const listEl = document.getElementById('store-list');
             const countEl = document.getElementById('store-count');
-            const sortMode = document.getElementById('sort-select').value;
+            const sortSelect = document.getElementById('sort-select');
+            if (!listEl || !countEl || !sortSelect) return;
+
+            const sortMode = sortSelect.value;
 
             let filtered = stores.filter(store => {
                 if (currentCategory !== 'all' && store.category !== currentCategory) {
@@ -554,7 +543,7 @@
                             </p>
                         </div>
                     </div>
-
+                    <div class="flex items-center gap-2 pt-1">
                         <a href="${naverMapUrl}" target="_blank" class="flex-1 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 text-xs font-bold py-2 rounded-xl text-center flex items-center justify-center gap-1 border border-emerald-200 transition">
                             <i class="fa-solid fa-map-location-dot text-emerald-600"></i>
                             네이버 지도
@@ -566,45 +555,88 @@
         }
 
         // ==========================================
-        // CANVAS ROULETTE ENGINE (7 SLICES)
+        // CANVAS ROULETTE ENGINE (SMART SIMPLIFIED)
         // ==========================================
         let startAngle = 0;
-        let arc = (2 * Math.PI) / rouletteSlices.length;
+        let arc = 0;
         let spinTimeout = null;
         let spinAngleStart = 10;
         let spinTime = 0;
         let spinTimeTotal = 0;
         let isSpinning = false;
-
+        
+        let selectedRouletteCat = 'all';
+        let activeStores = [];
+        let currentSlices = [];
+        
+        const PALETTE = ['#E53935', '#8E24AA', '#FFB300', '#D81B60', '#43A047', '#1E88E5', '#334155', '#D97706'];
+        
         function initRouletteWheel() {
+            onRouletteCatChange();
+        }
+        
+        // 카테고리 변경 시 룰렛 조각 업데이트
+        function onRouletteCatChange() {
+            const selectEl = document.getElementById('roulette-cat-select');
+            if (selectEl) {
+                selectedRouletteCat = selectEl.value;
+            }
+        
+            if (selectedRouletteCat === 'all') {
+                activeStores = stores;
+            } else {
+                activeStores = stores.filter(s => s.category === selectedRouletteCat);
+            }
+        
+            // 시각적 단소화 로직:
+            // 8개 이하 점포: 상호명을 룰렛 슬라이스에 직접 표기
+            // 8개 초과 점포: 8개의 '행운의 픽' 슬라이스로 깔끔하게 표기
+            if (activeStores.length <= 8) {
+                currentSlices = activeStores.map((s, idx) => ({
+                    id: s.category,
+                    name: s.name,
+                    color: PALETTE[idx % PALETTE.length],
+                    icon: (categoryMeta[s.category] || categoryMeta.all).icon,
+                    store: s
+                }));
+            } else {
+                const luckyIcons = ['🎯', '🎰', '🎁', '✨', '🔥', '⭐', '🎉', '🍀'];
+                currentSlices = luckyIcons.map((icon, idx) => ({
+                    id: selectedRouletteCat,
+                    name: `행운의 픽`,
+                    color: PALETTE[idx % PALETTE.length],
+                    icon: icon
+                }));
+            }
+        
+            arc = (2 * Math.PI) / currentSlices.length;
             drawRouletteWheel();
         }
-
+        
         function drawRouletteWheel() {
             const canvas = document.getElementById('roulette-canvas');
-            if (!canvas.getContext) return;
+            if (!canvas || !canvas.getContext) return;
             const ctx = canvas.getContext('2d');
             const outsideRadius = 145;
             const textRadius = 100;
-            const insideRadius = 45; // Leave room for enlarged center button
-
+            const insideRadius = 45;
+        
             ctx.clearRect(0, 0, 310, 310);
-
             ctx.strokeStyle = '#FFFFFF';
             ctx.lineWidth = 3;
-
-            for (let i = 0; i < rouletteSlices.length; i++) {
+        
+            for (let i = 0; i < currentSlices.length; i++) {
                 const angle = startAngle + i * arc;
-                const slice = rouletteSlices[i];
+                const slice = currentSlices[i];
                 
                 ctx.fillStyle = slice.color;
-
+        
                 ctx.beginPath();
                 ctx.arc(155, 155, outsideRadius, angle, angle + arc, false);
                 ctx.arc(155, 155, insideRadius, angle + arc, angle, true);
                 ctx.stroke();
                 ctx.fill();
-
+        
                 ctx.save();
                 ctx.fillStyle = '#FFFFFF';
                 ctx.shadowColor = 'rgba(0,0,0,0.4)';
@@ -616,68 +648,72 @@
                 );
                 ctx.rotate(angle + arc / 2 + Math.PI / 2);
                 
-                const text = `${slice.icon} ${slice.name}`;
+                let text = `${slice.icon} ${slice.name}`;
+                if (text.length > 9) text = text.substring(0, 8) + '..';
+        
                 ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
                 ctx.restore();
             }
         }
-
+        
+        // 룰렛 회전 및 속도 제어
         function spinRoulette() {
-            if (isSpinning) return;
+            if (isSpinning || activeStores.length === 0) return;
             playAudio('click');
             isSpinning = true;
-
-            spinAngleStart = Math.random() * 10 + 12;
+        
+            // ⚡ [속도 조절 설정]
+            spinAngleStart = Math.random() * 10 + 35; // 초기 속도
             spinTime = 0;
-            spinTimeTotal = Math.random() * 2500 + 3500; // 3.5 ~ 6 seconds
+            spinTimeTotal = Math.random() * 1500 + 2500; // 회전 지속 시간 (2.5초 ~ 4초)
+            
             rotateWheel();
         }
-
+        
         function rotateWheel() {
             spinTime += 20;
             if (spinTime >= spinTimeTotal) {
                 stopRotateWheel();
                 return;
             }
-
+        
             if (Math.floor(spinTime / 100) % 2 === 0) {
                 playAudio('tick');
             }
-
+        
             const spinAngle = spinAngleStart - easeOut(spinTime, 0, spinAngleStart, spinTimeTotal);
             startAngle += (spinAngle * Math.PI / 180);
             drawRouletteWheel();
             spinTimeout = setTimeout(rotateWheel, 20);
         }
-
+        
         function stopRotateWheel() {
             clearTimeout(spinTimeout);
             isSpinning = false;
-
+        
             const degrees = startAngle * 180 / Math.PI + 90;
             const arcd = arc * 180 / Math.PI;
-            const index = Math.floor((360 - degrees % 360) / arcd);
-
-            const winningSlice = rouletteSlices[index] || rouletteSlices[0];
-
-            // Pick a random store from candidate category
-            let candidates = [];
-            if (winningSlice.id === 'all') {
-                candidates = stores;
+            const index = Math.floor((360 - degrees % 360) / arcd) % currentSlices.length;
+        
+            const winningSlice = currentSlices[index] || currentSlices[0];
+        
+            // 점포 최종 추첨
+            let winnerStore;
+            if (winningSlice.store) {
+                winnerStore = winningSlice.store;
             } else {
-                candidates = stores.filter(s => s.category === winningSlice.id);
+                winnerStore = activeStores[Math.floor(Math.random() * activeStores.length)];
             }
-
-            const randomStore = candidates[Math.floor(Math.random() * candidates.length)];
-            showWinnerModal(randomStore, winningSlice);
+        
+            showWinnerModal(winnerStore, winningSlice);
         }
-
+        
         function easeOut(t, b, c, d) {
             const ts = (t /= d) * t;
             const tc = ts * t;
             return b + c * (tc + -3 * ts + 3 * t);
         }
-
+        
         // Winner Modal Trigger
         function showWinnerModal(store, slice) {
             playAudio('win');
@@ -703,13 +739,15 @@
         function openModal(id) {
             playAudio('click');
             const modal = document.getElementById(id);
-            modal.classList.remove('hidden');
+            if (modal) modal.classList.remove('hidden');
             if (id === 'winnerModal') {
                 const content = document.getElementById('winner-modal-content');
-                setTimeout(() => {
-                    content.classList.remove('scale-95', 'opacity-0');
-                    content.classList.add('scale-100', 'opacity-100');
-                }, 10);
+                if (content) {
+                    setTimeout(() => {
+                        content.classList.remove('scale-95', 'opacity-0');
+                        content.classList.add('scale-100', 'opacity-100');
+                    }, 10);
+                }
             }
         }
 
@@ -718,24 +756,16 @@
             const modal = document.getElementById(id);
             if (id === 'winnerModal') {
                 const content = document.getElementById('winner-modal-content');
-                content.classList.remove('scale-100', 'opacity-100');
-                content.classList.add('scale-95', 'opacity-0');
+                if (content) {
+                    content.classList.remove('scale-100', 'opacity-100');
+                    content.classList.add('scale-95', 'opacity-0');
+                }
                 setTimeout(() => {
-                    modal.classList.add('hidden');
+                    if (modal) modal.classList.add('hidden');
                 }, 200);
             } else {
-                modal.classList.add('hidden');
+                if (modal) modal.classList.add('hidden');
             }
-        }
-
-        function showToast(msg) {
-            const toast = document.getElementById('toast');
-            document.getElementById('toast-message').textContent = msg;
-            toast.classList.remove('opacity-0', 'pointer-events-none');
-            
-            setTimeout(() => {
-                toast.classList.add('opacity-0', 'pointer-events-none');
-            }, 2200);
         }
 
         // Web Audio Synthesizer
