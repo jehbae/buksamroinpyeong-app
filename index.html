@@ -511,7 +511,8 @@
             if (sortMode === 'name') {
                 filtered.sort((a, b) => a.name.localeCompare(b.name, 'ko'));
             } else if (sortMode === 'category') {
-                filtered.sort((a, b) => a.category.localeCompare(b.subcat));
+                filtered.sort((a, b) => a.category.localeCompare(b.category)
+                             || (a.subcat = || '').localeCompare(b.subcat || ''));
             }
 
             countEl.textContent = filtered.length;
@@ -546,6 +547,11 @@
                             </div>
                             <h3 class="text-base font-bold text-slate-900 tracking-tight">
                                 ${store.name}
+                            </h3>
+                            <p class="text-xs text-slate-500 flex items-center gap-1">
+                                <i class="fa-solid fa-location-dot text-rose-500 text-[11px]"></i>
+                                <span>칠곡군 북삼읍 ${store.address}</span>
+                            </p>
                         </div>
                     </div>
 
