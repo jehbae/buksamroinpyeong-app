@@ -74,16 +74,16 @@
                         칠곡군 골목형상점가
                     </span>
                     <h1 class="text-xl font-black text-white tracking-tight flex items-center gap-1.5">
-                        북삼로인평 상점가 🛍️
+                        북삼로인평 골목형상점가 🛍️
                     </h1>
                 </div>
                 <button onclick="openModal('onnuriModal')" class="bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs font-black px-3 py-1.5 rounded-xl shadow-md transition transform active:scale-95 flex items-center gap-1.5">
                     <span>🎁</span>
-                    <span>온누리 환급</span>
+                    <span>온누리상품권 환급행사</span>
                 </button>
             </div>
             <p class="text-xs text-slate-300 px-4 pb-3">
-                우리 동네 49개 참여 점포 맞춤 검색 & 맞춤 점포 룰렛 🎰
+                우리 동네 49개 참여 점포 맞춤 검색 & 선택이 힘들 때! 맞춤 룰렛 🎰
             </p>
 
             <!-- Navigation Tabs -->
@@ -102,8 +102,8 @@
         <!-- Onnuri Event Quick Banner -->
         <div onclick="openModal('onnuriModal')" class="bg-amber-50 border-b border-amber-200 px-4 py-2 flex items-center justify-between cursor-pointer hover:bg-amber-100/80 transition">
             <div class="flex items-center gap-2 text-xs text-amber-950 font-medium truncate">
-                <span class="bg-rose-600 text-white text-[10px] font-black px-1.5 py-0.5 rounded shrink-0">100% 증정</span>
-                <span class="truncate">당일 구매 영수증으로 <b>온누리상품권</b> 환급받으세요!</span>
+                <span class="bg-rose-600 text-white text-[10px] font-black px-1.5 py-0.5 rounded shrink-0">최대 2만 원 환급</span>
+                <span class="truncate">행사 참여하고 <b>온누리상품권</b> 환급받으세요!</span>
             </div>
             <i class="fa-solid fa-chevron-right text-xs text-amber-700 shrink-0"></i>
         </div>
@@ -118,7 +118,7 @@
                         STEP 1. 업종 분류 선택
                     </h2>
                     <span id="total-count-badge" class="text-[11px] font-bold text-rose-600 bg-rose-50 px-2 py-0.5 rounded-full border border-rose-100">
-                        총 50개 점포
+                        총 49개 점포
                     </span>
                 </div>
 
@@ -163,7 +163,7 @@
                     오늘 뭐 하지? 어디로 갈까? 🎲
                 </h2>
                 <p class="text-xs text-slate-500 mt-1">
-                    START 버튼을 누르면 7개 업종 중 무작위로 추천해 드립니다!
+                    START 버튼을 누르면 고객님께 가장 알맞음 점포를 추천해 드립니다!
                 </p>
             </div>
 
@@ -193,7 +193,7 @@
                     룰렛 슬라이스 구성 (7개 카테고리)
                 </h3>
                 <div class="grid grid-cols-2 gap-1.5 text-[11px] text-slate-600">
-                    <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-slate-800"></span>🎲 전체 무작위 (50곳)</div>
+                    <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-slate-800"></span>🎲 전체 무작위 (49곳)</div>
                     <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-red-600"></span>🔴 음식점 (24곳)</div>
                     <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-purple-600"></span>🟣 치킨/주점/야식 (6곳)</div>
                     <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>🟡 카페/분식 (6곳)</div>
@@ -209,7 +209,7 @@
         <footer class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white border-t border-slate-200 px-4 py-2.5 z-20 flex items-center justify-between text-slate-600 text-xs shadow-lg">
             <div class="flex items-center gap-2">
                 <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span class="font-bold text-slate-800">북삼로인평 상인회 공식</span>
+                <span class="font-bold text-slate-800">북삼로인평 상인회</span>
             </div>
             <button onclick="openModal('onnuriModal')" class="text-xs font-bold text-rose-600 hover:underline flex items-center gap-1">
                 <i class="fa-solid fa-gift"></i>
@@ -278,18 +278,19 @@
                         행사 내용
                     </h4>
                     <p class="text-slate-600 leading-relaxed">
-                        상점가 내 50개 참여 가맹점에서 당일 구매하신 영수증을 지참하시면 **온누리상품권**으로 즉시 환급해 드립니다!
+                        행사 기간 중 상점가 내 49개 참여 가맹점에서 소비 후 영수증을 지참하여 환급 부스를 방문하시면 온누리상품권을 드립니다!
                     </p>
                 </div>
 
                 <div class="bg-slate-50 p-3 rounded-2xl border border-slate-200 space-y-1">
-                    <p><b>📍 대상:</b> 북삼로인평 골목형상점가 50개 가맹점</p>
-                    <p><b>💰 예산:</b> 총 5,500,000원 (소진 시 조기 마감)</p>
-                    <p><b>📄 필수 지참:</b> 당일 구매 영수증</p>
+                    <p><b>📍 대상:</b> 북삼로인평 골목형상점가 49개 가맹점</p>
+                    <p><b>📅 행사 기간:</b> 26. 11. 21.(토) ~ 11. 30.(월)(</p>
+                    <p><b>💰 환급 기간:</b> 26. 12. 05.(토) ~ 12.06.(일) 10:00 ~ 07:00 북삼인평근린공원</p>
+                    <p><b>📄 필수 지참:</b> 영수증 및 신분증</p>
                 </div>
 
                 <div class="text-[11px] text-slate-500 leading-normal bg-rose-50 p-2.5 rounded-xl border border-rose-100">
-                    ⚠️ 본 행사는 예산 소진 시까지 선착순 운영되며, 세부 교환 장소는 현장안내를 참고하세요.
+                    ⚠️ 본 행사의 환급은 준비된 물량 및 예산 소진 시까지 선착순으로 운영되며, 세부 정보는 상점가 곳곳에 비치된 홍보 자료를 참고하세요.
                 </div>
             </div>
 
@@ -309,52 +310,51 @@
     <script>
         // 1. STORE DATABASE (50 STORES)
         const stores = [
-            // 음식점 (24)
+            // 음식점 (25)
             { name: '경화추어탕', category: 'food', subcat: '한식/추어탕', address: '북삼로 95', tel: '054-972-0001' },
-            { name: '교동짬뽕', category: 'food', subcat: '중식/짬뽕', address: '북삼로5길 2', tel: '054-973-0002' },
-            { name: '김가네푸줏간화로구이', category: 'food', subcat: '고기/화로구이', address: '북삼로 150', tel: '054-974-0003' },
+            { name: '교동짬뽕', category: 'food', subcat: '중식', address: '북삼로5길 2', tel: '054-973-0002' },
+            { name: '김가네푸줏간화로구이', category: 'food', subcat: '고기/구이', address: '북삼로 150', tel: '054-974-0003' },
+            { name: '달그릇공방', category: 'food', subcat: '양식', address: '북삼로 50', tel: '054-975-0031' },
             { name: '대구왕뽈찜', category: 'food', subcat: '해산물/뽈찜', address: '북삼로 146', tel: '054-975-0004' },
             { name: '대한곱창', category: 'food', subcat: '고기/곱창', address: '북삼로 92', tel: '054-976-0005' },
-            { name: '만기수산셀프매장', category: 'food', subcat: '해산물/수산', address: '북삼로 58', tel: '054-977-0006' },
-            { name: '미성숯불', category: 'food', subcat: '고기/숯불구이', address: '북삼로 136', tel: '054-978-0007' },
+            { name: '만기수산셀프매장', category: 'food', subcat: '해산물/장어', address: '북삼로 58', tel: '054-977-0006' },
+            { name: '미성숯불', category: 'food', subcat: '고기/구이', address: '북삼로 136', tel: '054-978-0007' },
             { name: '바다양푼이동태탕', category: 'food', subcat: '해산물/동태탕', address: '북삼로 156', tel: '054-979-0008' },
             { name: '배가네 횟집', category: 'food', subcat: '해산물/회', address: '북삼로 113', tel: '054-971-0009' },
             { name: '북삼언니네집', category: 'food', subcat: '한식/식사', address: '안산3길 33', tel: '054-972-0010' },
-            { name: '삼백초', category: 'food', subcat: '한식/식사', address: '인강6길 1', tel: '054-973-0011' },
+            { name: '삼백초', category: 'food', subcat: '한식/오리', address: '인강6길 1', tel: '054-973-0011' },
             { name: '시골막창', category: 'food', subcat: '고기/막창', address: '북삼로 121', tel: '054-974-0012' },
+            { name: '선산돌곱창생막창', category: 'food', subcat: '고기/막창', address: '북삼로 123', tel: '054-975-0013' },
             { name: '쏴라막창', category: 'food', subcat: '고기/막창', address: '북삼로 45', tel: '054-975-0013' },
             { name: '양포생아구', category: 'food', subcat: '해산물/아구찜', address: '북삼로 58', tel: '054-976-0014' },
             { name: '오늘은족발먹는날', category: 'food', subcat: '고기/족발', address: '북삼로 158', tel: '054-977-0015' },
-            { name: '왕돌한판생삼겹', category: 'food', subcat: '고기/삼겹살', address: '북삼로 153-1', tel: '054-978-0016' },
+            { name: '왕돌한판생삼겹', category: 'food', subcat: '고기/구이', address: '북삼로 153-1', tel: '054-978-0016' },
             { name: '우리동네막창', category: 'food', subcat: '고기/막창', address: '북삼로 123-1', tel: '054-979-0017' },
-            { name: '작은식탁', category: 'food', subcat: '한식/식사', address: '북삼로 52', tel: '054-971-0018' },
-            { name: '정백정참숯구이북삼본점', category: 'food', subcat: '고기/숯불구이', address: '북삼로 88', tel: '054-972-0019' },
-            { name: '착한쭈꾸미', category: 'food', subcat: '해산물/쭈꾸미', address: '북삼로 154', tel: '054-973-0020' },
-            { name: '폭탄돼지구이', category: 'food', subcat: '고기/돼지구이', address: '북삼로 80-1', tel: '054-974-0021' },
+            { name: '작은식탁', category: 'food', subcat: '양식/식사', address: '북삼로 52', tel: '054-971-0018' },
+            { name: '정백정참숯구이북삼본점', category: 'food', subcat: '고기/구이', address: '북삼로 88', tel: '054-972-0019' },
+            { name: '폭탄돼지구이', category: 'food', subcat: '고기/구이', address: '북삼로 80-1', tel: '054-974-0021' },
             { name: '한가네코다리', category: 'food', subcat: '해산물/코다리', address: '북삼로 144', tel: '054-975-0022' },
-            { name: '한돈참숯고기', category: 'food', subcat: '고기/참숯고기', address: '북삼로 86', tel: '054-976-0023' },
-            { name: '한라숯불꼼장어생삼겹', category: 'food', subcat: '고기/꼼장어', address: '북삼로 41', tel: '054-977-0024' },
+            { name: '한돈참숯고기', category: 'food', subcat: '고기/구이', address: '북삼로 86', tel: '054-976-0023' },
+            { name: '한라숯불꼼장어생삼겹', category: 'food', subcat: '고기/구이', address: '북삼로 41', tel: '054-977-0024' },
 
             // 치킨/주점/야식 (6)
             { name: 'BBQ', category: 'pub', subcat: '치킨', address: '북삼로11길 8', tel: '054-978-0025' },
             { name: '김경옥닭발', category: 'pub', subcat: '야식/닭발', address: '북삼로3길 3', tel: '054-979-0026' },
             { name: '노랑통닭', category: 'pub', subcat: '치킨', address: '북삼로 96', tel: '054-971-0027' },
-            { name: '달뜨는밤', category: 'pub', subcat: '주점/포차', address: '인강8길 32', tel: '054-972-0028' },
-            { name: '작은술집이야기', category: 'pub', subcat: '주점/포차', address: '인강8길 12', tel: '054-973-0029' },
-            { name: '청춘비어', category: 'pub', subcat: '주점/맥주', address: '북삼로 153-1', tel: '054-974-0030' },
+            { name: '달뜨는밤', category: 'pub', subcat: '주점', address: '인강8길 32', tel: '054-972-0028' },
+            { name: '작은술집이야기', category: 'pub', subcat: '주점', address: '인강8길 12', tel: '054-973-0029' },
+            { name: '청춘비어', category: 'pub', subcat: '주점', address: '북삼로 153-1', tel: '054-974-0030' },
 
-            // 카페/분식/디저트 (6)
-            { name: '달그릇공방', category: 'cafe', subcat: '카페/디저트', address: '북삼로 50', tel: '054-975-0031' },
-            { name: '라온', category: 'cafe', subcat: '카페/디저트', address: '인강3길 10', tel: '054-976-0032' },
-            { name: '세프라면&티타임커피', category: 'cafe', subcat: '분식/커피', address: '북삼로 116', tel: '054-977-0033' },
-            { name: '이플', category: 'cafe', subcat: '카페/디저트', address: '인강8길 32', tel: '054-978-0034' },
-            { name: '정우네분식당', category: 'cafe', subcat: '분식/간식', address: '안산3길 33', tel: '054-979-0035' },
-            { name: '플루메리아', category: 'cafe', subcat: '카페/디저트', address: '인강3길 10', tel: '054-971-0036' },
+            // 카페/분식 (3)
+            { name: '세프라면&티타임커피', category: 'cafe', subcat: '분식', address: '북삼로 116', tel: '054-977-0033' },
+            { name: '이플', category: 'cafe', subcat: '카페', address: '인강8길 32', tel: '054-978-0034' },
+            { name: '정우네분식당', category: 'cafe', subcat: '분식', address: '안산3길 33', tel: '054-979-0035' },
 
             // 뷰티/미용 (4)
-            { name: '네일하트', category: 'beauty', subcat: '네일/뷰티', address: '북삼로 118', tel: '054-972-0037' },
+            { name: '네일하트', category: 'beauty', subcat: '뷰티/네일', address: '북삼로 118', tel: '054-972-0037' },
             { name: '레코드펌', category: 'beauty', subcat: '헤어', address: '인강1길 81', tel: '054-973-0038' },
             { name: '토모헤어샵', category: 'beauty', subcat: '헤어', address: '인강4길 9', tel: '054-974-0039' },
+            { name: '플루메리아', category: 'beauty', subcat: '헤어', address: '인강3길 10', tel: '054-971-0036' },
             { name: '하모니헤어', category: 'beauty', subcat: '헤어', address: '안산3길 33', tel: '054-975-0040' },
 
             // 편의점 (3)
@@ -364,19 +364,19 @@
 
             // 생활/서비스/정비 (7)
             { name: '강진종합철물', category: 'service', subcat: '생활/철물', address: '북삼로 167', tel: '054-979-0044' },
-            { name: '나운재가노인복지센터', category: 'service', subcat: '복지/서비스', address: '북삼로 112', tel: '054-971-0045' },
-            { name: '대왕카정비', category: 'service', subcat: '정비/카센터', address: '북삼로 43', tel: '054-972-0046' },
-            { name: '두산광고', category: 'service', subcat: '디자인/광고', address: '북삼로 90', tel: '054-973-0047' },
-            { name: '마마운동화이불빨래방', category: 'service', subcat: '세탁/클리닝', address: '안산3길 33', tel: '054-974-0048' },
-            { name: '위더스컴퓨터', category: 'service', subcat: '수리/컴퓨터', address: '북삼로 118', tel: '054-975-0049' },
-            { name: '◇◇상회 (신규참여)', category: 'service', subcat: '생활/서비스', address: '북삼로 일원', tel: '054-976-0050' }
+            { name: '나운재가노인복지센터', category: 'service', subcat: '서비스/복지', address: '북삼로 112', tel: '054-971-0045' },
+            { name: '대왕카정비', category: 'service', subcat: '정비/차량', address: '북삼로 43', tel: '054-972-0046' },
+            { name: '두산광고', category: 'service', subcat: '생활/간판', address: '북삼로 90', tel: '054-973-0047' },
+            { name: '라온', category: 'service', subcat: '생활/옷', address: '인강3길 10', tel: '054-976-0032' },
+            { name: '마마운동화이불빨래방', category: 'service', subcat: '생활/세탁', address: '안산3길 33', tel: '054-974-0048' },
+            { name: '위더스컴퓨터', category: 'service', subcat: '생활/컴퓨터', address: '북삼로 118', tel: '054-975-0049' }
         ];
 
         // Categories Metadata
         const categoryMeta = {
             all: { name: '전체', icon: '🏪', count: 50, color: '#1E293B', badgeColor: 'bg-slate-100 text-slate-800' },
             food: { name: '음식점', icon: '🔴', count: 24, color: '#E53935', badgeColor: 'bg-red-100 text-red-700 border-red-200' },
-            pub: { name: '치킨/주점', icon: '🟣', count: 6, color: '#8E24AA', badgeColor: 'bg-purple-100 text-purple-700 border-purple-200' },
+            pub: { name: '치킨/주점/야식', icon: '🟣', count: 6, color: '#8E24AA', badgeColor: 'bg-purple-100 text-purple-700 border-purple-200' },
             cafe: { name: '카페/분식', icon: '🟡', count: 6, color: '#FFB300', badgeColor: 'bg-amber-100 text-amber-800 border-amber-200' },
             beauty: { name: '뷰티/미용', icon: '🌸', count: 4, color: '#D81B60', badgeColor: 'bg-pink-100 text-pink-700 border-pink-200' },
             cvs: { name: '편의점', icon: '🟢', count: 3, color: '#43A047', badgeColor: 'bg-emerald-100 text-emerald-700 border-emerald-200' },
