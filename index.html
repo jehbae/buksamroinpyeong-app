@@ -311,66 +311,66 @@
     <script>
         // 1. STORE DATABASE (49 STORES)
         const stores = [
-            // 음식점 (25)
-            { name: '경화추어탕', category: 'food', subcat: '한식/추어탕', address: '북삼로 95', tel: '054-972-0001' },
-            { name: '교동짬뽕', category: 'food', subcat: '중식', address: '북삼로5길 2', tel: '054-973-0002' },
-            { name: '김가네푸줏간화로구이', category: 'food', subcat: '고기/구이', address: '북삼로 150', tel: '054-974-0003' },
-            { name: '달그릇공방', category: 'food', subcat: '양식', address: '북삼로 50', tel: '054-975-0031' },
-            { name: '대구왕뽈찜', category: 'food', subcat: '해산물/뽈찜', address: '북삼로 146', tel: '054-975-0004' },
-            { name: '대한곱창', category: 'food', subcat: '고기/곱창', address: '북삼로 92', tel: '054-976-0005' },
-            { name: '만기수산셀프매장', category: 'food', subcat: '해산물/장어', address: '북삼로 58', tel: '054-977-0006' },
-            { name: '미성숯불', category: 'food', subcat: '고기/구이', address: '북삼로 136', tel: '054-978-0007' },
-            { name: '바다양푼이동태탕', category: 'food', subcat: '해산물/동태탕', address: '북삼로 156', tel: '054-979-0008' },
-            { name: '배가네 횟집', category: 'food', subcat: '해산물/회', address: '북삼로 113', tel: '054-971-0009' },
-            { name: '북삼언니네집', category: 'food', subcat: '한식/식사', address: '안산3길 33', tel: '054-972-0010' },
-            { name: '삼백초', category: 'food', subcat: '한식/오리', address: '인강6길 1', tel: '054-973-0011' },
-            { name: '시골막창', category: 'food', subcat: '고기/막창', address: '북삼로 121', tel: '054-974-0012' },
-            { name: '선산돌곱창생막창', category: 'food', subcat: '고기/막창', address: '북삼로 123', tel: '054-975-0013' },
-            { name: '쏴라막창', category: 'food', subcat: '고기/막창', address: '북삼로 45', tel: '054-975-0013' },
-            { name: '양포생아구', category: 'food', subcat: '해산물/아구찜', address: '북삼로 58', tel: '054-976-0014' },
-            { name: '오늘은족발먹는날', category: 'food', subcat: '고기/족발', address: '북삼로 158', tel: '054-977-0015' },
-            { name: '왕돌한판생삼겹', category: 'food', subcat: '고기/구이', address: '북삼로 153-1', tel: '054-978-0016' },
-            { name: '우리동네막창', category: 'food', subcat: '고기/막창', address: '북삼로 123-1', tel: '054-979-0017' },
-            { name: '작은식탁', category: 'food', subcat: '양식/식사', address: '북삼로 52', tel: '054-971-0018' },
-            { name: '정백정참숯구이북삼본점', category: 'food', subcat: '고기/구이', address: '북삼로 88', tel: '054-972-0019' },
-            { name: '폭탄돼지구이', category: 'food', subcat: '고기/구이', address: '북삼로 80-1', tel: '054-974-0021' },
-            { name: '한가네코다리', category: 'food', subcat: '해산물/코다리', address: '북삼로 144', tel: '054-975-0022' },
-            { name: '한돈참숯고기', category: 'food', subcat: '고기/구이', address: '북삼로 86', tel: '054-976-0023' },
-            { name: '한라숯불꼼장어생삼겹', category: 'food', subcat: '고기/구이', address: '북삼로 41', tel: '054-977-0024' },
+            // 음식점 (26)
+            { name: '경화추어탕', category: 'food', subcat: '한식/추어탕', address: '북삼로 95', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/2097725747?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291612%26locale%3Dko%26svcName%3Dmap_pcv5' },
+            { name: '교동짬뽕', category: 'food', subcat: '중식', address: '북삼로5길 2', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/1889759684?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291612%26locale%3Dko%26svcName%3Dmap_pcv5' },
+            { name: '김가네푸줏간화로구이', category: 'food', subcat: '고기/구이', address: '북삼로 150', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/1812806377?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291613%26locale%3Dko%26svcName%3Dmap_pcv5' },
+            { name: '김경옥닭발', category: 'pub', subcat: '한식/닭발', address: '북삼로3길 3', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/1628306675?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291613%26locale%3Dko%26svcName%3Dmap_pcv5' },
+            { name: '달그릇공방', category: 'food', subcat: '양식', address: '북삼로 50', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/1335336748?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291623%26locale%3Dko%26svcName%3Dmap_pcv5' },
+            { name: '대구왕뽈찜', category: 'food', subcat: '해산물/뽈찜', address: '북삼로 146', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/507773923?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291614%26locale%3Dko%26svcName%3Dmap_pcv5' },
+            { name: '대한곱창', category: 'food', subcat: '고기/곱창', address: '북삼로 92', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/33214251?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291615%26locale%3Dko%26svcName%3Dmap_pcv5' },
+            { name: '만기수산셀프매장', category: 'food', subcat: '해산물/장어', address: '북삼로 58', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/1004464648?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291622%26locale%3Dko%26svcName%3Dmap_pcv5' },
+            { name: '미성참숯불갈비', category: 'food', subcat: '고기/구이', address: '북삼로 136', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/563953709?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291622%26locale%3Dko%26svcName%3Dmap_pcv5' },
+            { name: '바다양푼이동태탕', category: 'food', subcat: '해산물/동태탕', address: '북삼로 156', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/1492648567?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291623%26locale%3Dko%26svcName%3Dmap_pcv5' },
+            { name: '배가네 회 도매센터', category: 'food', subcat: '해산물/회', address: '북삼로 113', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/1869260745?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291623%26locale%3Dko%26svcName%3Dmap_pcv5' },
+            { name: '북삼언니네집', category: 'food', subcat: '한식/식사', address: '안산3길 33', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/2146424131?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291624%26locale%3Dko%26svcName%3Dmap_pcv5' },
+            { name: '삼백초', category: 'food', subcat: '한식/오리', address: '인강6길 1', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/1367567352?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291624%26locale%3Dko%26svcName%3Dmap_pcv5' },
+            { name: '선산돌곱창생막창', category: 'food', subcat: '고기/막창', address: '북삼로 123', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/1736353686?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291625%26locale%3Dko%26svcName%3Dmap_pcv5' },
+            { name: '시골생막창', category: 'food', subcat: '고기/막창', address: '북삼로 121', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/1061112671?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291624%26locale%3Dko%26svcName%3Dmap_pcv5' },
+            { name: '쏴라막창', category: 'food', subcat: '고기/막창', address: '북삼로 45', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/1698981077?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291625%26locale%3Dko%26svcName%3Dmap_pcv5' },
+            { name: '양포생아구', category: 'food', subcat: '해산물/아구찜', address: '북삼로 58', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/996787052?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291625%26locale%3Dko%26svcName%3Dmap_pcv5' },
+            { name: '오늘은족발먹는날', category: 'food', subcat: '고기/족발', address: '북삼로 158', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/36774240?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291625%26locale%3Dko%26svcName%3Dmap_pcv5' },
+            { name: '왕돌한판생삼겹', category: 'food', subcat: '고기/구이', address: '북삼로 153-1', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/38692744?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291626%26locale%3Dko%26svcName%3Dmap_pcv5' },
+            { name: '우리동네막창', category: 'food', subcat: '고기/막창', address: '북삼로 123-1', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/1327684201?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291626%26locale%3Dko%26svcName%3Dmap_pcv5' },
+            { name: '작은식탁', category: 'food', subcat: '양식/식사', address: '북삼로 52', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/33869400?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291627%26locale%3Dko%26svcName%3Dmap_pcv5' },
+            { name: '정백정참숯구이', category: 'food', subcat: '고기/구이', address: '북삼로 88', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/1163822476?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291627%26locale%3Dko%26svcName%3Dmap_pcv5' },
+            { name: '참숯폭탄돼지구이', category: 'food', subcat: '고기/구이', address: '북삼로 80-1', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/1781854843?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291628%26locale%3Dko%26svcName%3Dmap_pcv5' },
+            { name: '한가네코다리', category: 'food', subcat: '해산물/코다리', address: '북삼로 144', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/1086211345?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291630%26locale%3Dko%26svcName%3Dmap_pcv5' },
+            { name: '한돈참숯기', category: 'food', subcat: '고기/구이', address: '북삼로 86', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/37182937?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291630%26locale%3Dko%26svcName%3Dmap_pcv5' },
+            { name: '한라숯불꼼장어생삼겹', category: 'food', subcat: '고기/구이', address: '북삼로 41', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/1810086430?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291630%26locale%3Dko%26svcName%3Dmap_pcv5' },
 
             // 치킨/주점/야식 (6)
-            { name: 'BBQ', category: 'pub', subcat: '치킨', address: '북삼로11길 8', tel: '054-978-0025' },
-            { name: '김경옥닭발', category: 'pub', subcat: '야식/닭발', address: '북삼로3길 3', tel: '054-979-0026' },
-            { name: '노랑통닭', category: 'pub', subcat: '치킨', address: '북삼로 96', tel: '054-971-0027' },
-            { name: '달뜨는밤', category: 'pub', subcat: '주점', address: '인강8길 32', tel: '054-972-0028' },
-            { name: '작은술집이야기', category: 'pub', subcat: '주점', address: '인강8길 12', tel: '054-973-0029' },
-            { name: '청춘비어', category: 'pub', subcat: '주점', address: '북삼로 153-1', tel: '054-974-0030' },
+            { name: 'BBQ', category: 'pub', subcat: '치킨', address: '북삼로11길 8', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/15286486?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291610%26locale%3Dko%26svcName%3Dmap_pcv5' },
+            { name: '노랑통닭', category: 'pub', subcat: '치킨', address: '북삼로 96', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/1080894653?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291613%26locale%3Dko%26svcName%3Dmap_pcv5' },
+            { name: '달뜨는밤', category: 'pub', subcat: '주점', address: '인강8길 32', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/1166150524?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291614%26locale%3Dko%26svcName%3Dmap_pcv5' },
+            { name: '레코드가게', category: 'beauty', subcat: '주점', address: '인강1길 81', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/1265644763?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291615%26locale%3Dko%26svcName%3Dmap_pcv5' },
+            { name: '작은술집이야기', category: 'pub', subcat: '주점', address: '인강8길 12', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/1222173599?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291627%26locale%3Dko%26svcName%3Dmap_pcv5' },
+            { name: '청춘낭만비어', category: 'pub', subcat: '주점', address: '북삼로 153-1', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/36727656?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291628%26locale%3Dko%26svcName%3Dmap_pcv5' },
 
             // 카페/분식 (3)
-            { name: '세프라면&티타임커피', category: 'cafe', subcat: '분식', address: '북삼로 116', tel: '054-977-0033' },
-            { name: '이플', category: 'cafe', subcat: '카페', address: '인강8길 32', tel: '054-978-0034' },
-            { name: '정우네분식당', category: 'cafe', subcat: '분식', address: '안산3길 33', tel: '054-979-0035' },
+            { name: '티타임셰프라면&커피', category: 'cafe', subcat: '분식', address: '북삼로 116', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/2145711089?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291629%26locale%3Dko%26svcName%3Dmap_pcv5' },
+            { name: '이플', category: 'cafe', subcat: '카페', address: '인강8길 32', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/1954202676?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291626%26locale%3Dko%26svcName%3Dmap_pcv5' },
+            { name: '정우네분식당', category: 'cafe', subcat: '분식', address: '안산3길 33', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/address/3AcBBh,2zLafR,%EA%B2%BD%EC%83%81%EB%B6%81%EB%8F%84%20%EC%B9%A0%EA%B3%A1%EA%B5%B0%20%EB%B6%81%EC%82%BC%EC%9D%8D%20%EC%95%88%EC%82%B03%EA%B8%B8%2033?c=16.00,0,0,0,dh' },
 
-            // 뷰티/미용 (5)
-            { name: '네일하트', category: 'beauty', subcat: '뷰티/네일', address: '북삼로 118', tel: '054-972-0037' },
-            { name: '레코드펌', category: 'beauty', subcat: '헤어', address: '인강1길 81', tel: '054-973-0038' },
-            { name: '토모헤어샵', category: 'beauty', subcat: '헤어', address: '인강4길 9', tel: '054-974-0039' },
-            { name: '플루메리아', category: 'beauty', subcat: '헤어', address: '인강3길 10', tel: '054-971-0036' },
-            { name: '하모니헤어', category: 'beauty', subcat: '헤어', address: '안산3길 33', tel: '054-975-0040' },
+            // 뷰티/미용 (4)
+            { name: '네일하트', category: 'beauty', subcat: '뷰티/네일', address: '북삼로 118', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/1593313324?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291613%26locale%3Dko%26svcName%3Dmap_pcv5' },
+            { name: '토모헤어샵', category: 'beauty', subcat: '헤어', address: '인강4길 9', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/2141574011?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291629%26locale%3Dko%26svcName%3Dmap_pcv5' },
+            { name: '플루메리아', category: 'beauty', subcat: '헤어', address: '인강3길 10', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/2060510940?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291629%26locale%3Dko%26svcName%3Dmap_pcv5' },
+            { name: '하모니헤어', category: 'beauty', subcat: '헤어', address: '안산3길 33', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/35045434?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291629%26locale%3Dko%26svcName%3Dmap_pcv5' },
 
             // 편의점 (3)
-            { name: 'CU북삼행복점', category: 'cvs', subcat: '편의점', address: '북삼로 124', tel: '054-976-0041' },
-            { name: 'GS25북삼인평공원점', category: 'cvs', subcat: '편의점', address: '북삼로 47', tel: '054-977-0042' },
-            { name: 'GS25북삼인평점', category: 'cvs', subcat: '편의점', address: '북삼로11길 50', tel: '054-978-0043' },
+            { name: 'CU북삼행복점', category: 'cvs', subcat: '편의점', address: '북삼로 124', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/659514779?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291611%26locale%3Dko%26svcName%3Dmap_pcv5' },
+            { name: 'GS25북삼인평공원점', category: 'cvs', subcat: '편의점', address: '북삼로 47', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/1852636958?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291611%26locale%3Dko%26svcName%3Dmap_pcv5' },
+            { name: 'GS25북삼인평점', category: 'cvs', subcat: '편의점', address: '북삼로11길 50', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/1789868802?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291611%26locale%3Dko%26svcName%3Dmap_pcv5' },
 
             // 생활/서비스/정비 (7)
-            { name: '강진종합철물', category: 'service', subcat: '생활/철물', address: '북삼로 167', tel: '054-979-0044' },
-            { name: '나운재가노인복지센터', category: 'service', subcat: '서비스/복지', address: '북삼로 112', tel: '054-971-0045' },
-            { name: '대왕카정비', category: 'service', subcat: '정비/차량', address: '북삼로 43', tel: '054-972-0046' },
-            { name: '두산광고', category: 'service', subcat: '생활/간판', address: '북삼로 90', tel: '054-973-0047' },
-            { name: '라온', category: 'service', subcat: '생활/옷', address: '인강3길 10', tel: '054-976-0032' },
-            { name: '마마운동화이불빨래방', category: 'service', subcat: '생활/세탁', address: '안산3길 33', tel: '054-974-0048' },
-            { name: '위더스컴퓨터', category: 'service', subcat: '생활/컴퓨터', address: '북삼로 118', tel: '054-975-0049' }
+            { name: '강진종합철물', category: 'service', subcat: '생활/철물', address: '북삼로 167', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/1286435787?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291612%26locale%3Dko%26svcName%3Dmap_pcv5' },
+            { name: '나운재가노인복지센터', category: 'service', subcat: '서비스/복지', address: '북삼로 112', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/1078454151?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291613%26locale%3Dko%26svcName%3Dmap_pcv5' },
+            { name: '대왕카정비', category: 'service', subcat: '정비/차량', address: '북삼로 43', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/15290031?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291614%26locale%3Dko%26svcName%3Dmap_pcv5' },
+            { name: '두산광고', category: 'service', subcat: '생활/간판', address: '북삼로 90', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/34292592?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291615%26locale%3Dko%26svcName%3Dmap_pcv5' },
+            { name: '라온', category: 'service', subcat: '생활/의류', address: '인강3길 10', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/1144471876?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291615%26locale%3Dko%26svcName%3Dmap_pcv5' },
+            { name: '마마운동화이불빨래방', category: 'service', subcat: '생활/세탁', address: '안산3길 33', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/1245938086?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291622%26locale%3Dko%26svcName%3Dmap_pcv5' },
+            { name: '위더스컴퓨터', category: 'service', subcat: '생활/컴퓨터', address: '북삼로 118', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/1138283742?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291626%26locale%3Dko%26svcName%3Dmap_pcv5' }
         ];
 
         // Categories Metadata
@@ -511,8 +511,8 @@
             if (sortMode === 'name') {
                 filtered.sort((a, b) => a.name.localeCompare(b.name, 'ko'));
             } else if (sortMode === 'category') {
-                filtered.sort((a, b) => a.category.localeCompare(b.category)
-                             || (a.subcat = || '').localeCompare(b.subcat || ''));
+                filtered.sort((a, b) => a.category.localeCompare(b.category, 'ko') ||
+                             (a.subcat || '').localeCompare(b.subcat || '', 'ko'));
             }
 
             countEl.textContent = filtered.length;
