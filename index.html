@@ -194,10 +194,10 @@
                 </h3>
                 <div class="grid grid-cols-2 gap-1.5 text-[11px] text-slate-600">
                     <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-slate-800"></span>🎲 전체 무작위 (49곳)</div>
-                    <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-red-600"></span>🔴 음식점 (24곳)</div>
+                    <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-red-600"></span>🔴 음식점 (25곳)</div>
                     <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-purple-600"></span>🟣 치킨/주점/야식 (6곳)</div>
-                    <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>🟡 카페/분식 (6곳)</div>
-                    <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-pink-600"></span>🌸 뷰티/미용 (4곳)</div>
+                    <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>🟡 카페/분식 (3곳)</div>
+                    <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-pink-600"></span>🌸 뷰티/미용 (5곳)</div>
                     <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-emerald-600"></span>🟢 편의점 (3곳)</div>
                     <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span>🔵 생활/서비스 (7곳)</div>
                 </div>
@@ -308,7 +308,7 @@
 
     <!-- JavaScript Logic -->
     <script>
-        // 1. STORE DATABASE (50 STORES)
+        // 1. STORE DATABASE (49 STORES)
         const stores = [
             // 음식점 (25)
             { name: '경화추어탕', category: 'food', subcat: '한식/추어탕', address: '북삼로 95', tel: '054-972-0001' },
@@ -350,7 +350,7 @@
             { name: '이플', category: 'cafe', subcat: '카페', address: '인강8길 32', tel: '054-978-0034' },
             { name: '정우네분식당', category: 'cafe', subcat: '분식', address: '안산3길 33', tel: '054-979-0035' },
 
-            // 뷰티/미용 (4)
+            // 뷰티/미용 (5)
             { name: '네일하트', category: 'beauty', subcat: '뷰티/네일', address: '북삼로 118', tel: '054-972-0037' },
             { name: '레코드펌', category: 'beauty', subcat: '헤어', address: '인강1길 81', tel: '054-973-0038' },
             { name: '토모헤어샵', category: 'beauty', subcat: '헤어', address: '인강4길 9', tel: '054-974-0039' },
@@ -374,11 +374,11 @@
 
         // Categories Metadata
         const categoryMeta = {
-            all: { name: '전체', icon: '🏪', count: 50, color: '#1E293B', badgeColor: 'bg-slate-100 text-slate-800' },
-            food: { name: '음식점', icon: '🔴', count: 24, color: '#E53935', badgeColor: 'bg-red-100 text-red-700 border-red-200' },
+            all: { name: '전체', icon: '🏪', count: 49, color: '#1E293B', badgeColor: 'bg-slate-100 text-slate-800' },
+            food: { name: '음식점', icon: '🔴', count: 25, color: '#E53935', badgeColor: 'bg-red-100 text-red-700 border-red-200' },
             pub: { name: '치킨/주점/야식', icon: '🟣', count: 6, color: '#8E24AA', badgeColor: 'bg-purple-100 text-purple-700 border-purple-200' },
-            cafe: { name: '카페/분식', icon: '🟡', count: 6, color: '#FFB300', badgeColor: 'bg-amber-100 text-amber-800 border-amber-200' },
-            beauty: { name: '뷰티/미용', icon: '🌸', count: 4, color: '#D81B60', badgeColor: 'bg-pink-100 text-pink-700 border-pink-200' },
+            cafe: { name: '카페/분식', icon: '🟡', count: 3, color: '#FFB300', badgeColor: 'bg-amber-100 text-amber-800 border-amber-200' },
+            beauty: { name: '뷰티/미용', icon: '🌸', count: 5, color: '#D81B60', badgeColor: 'bg-pink-100 text-pink-700 border-pink-200' },
             cvs: { name: '편의점', icon: '🟢', count: 3, color: '#43A047', badgeColor: 'bg-emerald-100 text-emerald-700 border-emerald-200' },
             service: { name: '생활/서비스', icon: '🔵', count: 7, color: '#1E88E5', badgeColor: 'bg-blue-100 text-blue-700 border-blue-200' }
         };
@@ -522,7 +522,7 @@
                         <div class="text-3xl mb-2">🔍</div>
                         <p class="text-xs text-slate-500 font-medium">검색 결과가 없습니다.</p>
                         <button onclick="clearSearch(); selectCategory('all');" class="mt-2 text-xs text-rose-600 font-bold underline">
-                            전체 50개 점포 보기
+                            전체 49개 점포 보기
                         </button>
                     </div>
                 `;
