@@ -286,7 +286,7 @@
                     <p><b>📍 대상:</b> 북삼로인평 골목형상점가 49개 가맹점</p>
                     <p><b>📅 행사 기간:</b> 26. 11. 21.(토) ~ 11. 30.(월)</p>
                     <p><b>💰 환급 기간:</b> 26. 12. 05.(토) ~ 12.06.(일) 10:00 ~ 17:00</p>
-                    <p><b>북삼인평근린공원</b>
+                    <p><b>🚩 환급 장소:</b> 북삼인평근린공원</p>
                     <p><b>📄 필수 지참:</b> 영수증 및 신분증</p>
                 </div>
 
@@ -343,7 +343,7 @@
             { name: 'BBQ', category: 'pub', subcat: '치킨', address: '북삼로11길 8', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/15286486?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291610%26locale%3Dko%26svcName%3Dmap_pcv5' },
             { name: '노랑통닭', category: 'pub', subcat: '치킨', address: '북삼로 96', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/1080894653?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291613%26locale%3Dko%26svcName%3Dmap_pcv5' },
             { name: '달뜨는밤', category: 'pub', subcat: '주점', address: '인강8길 32', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/1166150524?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291614%26locale%3Dko%26svcName%3Dmap_pcv5' },
-            { name: '레코드가게', category: 'beauty', subcat: '주점', address: '인강1길 81', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/1265644763?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291615%26locale%3Dko%26svcName%3Dmap_pcv5' },
+            { name: '레코드가게', category: 'pub', subcat: '주점', address: '인강1길 81', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/1265644763?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291615%26locale%3Dko%26svcName%3Dmap_pcv5' },
             { name: '작은술집이야기', category: 'pub', subcat: '주점', address: '인강8길 12', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/1222173599?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291627%26locale%3Dko%26svcName%3Dmap_pcv5' },
             { name: '청춘낭만비어', category: 'pub', subcat: '주점', address: '북삼로 153-1', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/36727656?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291628%26locale%3Dko%26svcName%3Dmap_pcv5' },
 
@@ -533,7 +533,7 @@
 
             filtered.forEach(store => {
                 const meta = categoryMeta[store.category] || categoryMeta.all;
-                const naverMapUrl = `https://map.naver.com/v5/search/${encodeURIComponent('칠곡군 북삼읍 ' + store.name)}`;
+                const naverMapUrl = `${store.url}`;
                 
                 const card = document.createElement('div');
                 card.className = "bg-white p-3.5 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition flex flex-col gap-2";
@@ -694,7 +694,7 @@
             document.getElementById('winner-badge').textContent = `${slice.icon} ${slice.name} 당첨!`;
             document.getElementById('winner-badge').className = `inline-block font-bold text-xs px-3.5 py-1 rounded-full mb-2 ${meta.badgeColor}`;
             document.getElementById('winner-address').innerHTML = `<i class="fa-solid fa-location-dot text-rose-500"></i> 칠곡군 북삼읍 ${store.address}`;
-            document.getElementById('winner-naver-link').href = `https://map.naver.com/v5/search/${encodeURIComponent('칠곡군 북삼읍 ' + store.name)}`;
+            document.getElementById('winner-naver-link').href = `${store.url}`;
 
             openModal('winnerModal');
         }
