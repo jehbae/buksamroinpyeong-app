@@ -284,8 +284,9 @@
 
                 <div class="bg-slate-50 p-3 rounded-2xl border border-slate-200 space-y-1">
                     <p><b>📍 대상:</b> 북삼로인평 골목형상점가 49개 가맹점</p>
-                    <p><b>📅 행사 기간:</b> 26. 11. 21.(토) ~ 11. 30.(월)(</p>
-                    <p><b>💰 환급 기간:</b> 26. 12. 05.(토) ~ 12.06.(일) 10:00 ~ 07:00 북삼인평근린공원</p>
+                    <p><b>📅 행사 기간:</b> 26. 11. 21.(토) ~ 11. 30.(월)</p>
+                    <p><b>💰 환급 기간:</b> 26. 12. 05.(토) ~ 12.06.(일) 10:00 ~ 17:00</p>
+                    <p><b>북삼인평근린공원</b>
                     <p><b>📄 필수 지참:</b> 영수증 및 신분증</p>
                 </div>
 
@@ -545,14 +546,6 @@
                             </div>
                             <h3 class="text-base font-bold text-slate-900 tracking-tight">
                                 ${store.name}
-                            </h3>
-                            <p class="text-xs text-slate-500 flex items-center gap-1">
-                                <i class="fa-solid fa-location-dot text-rose-500 text-[11px]"></i>
-                                <span>칠곡군 북삼읍 ${store.address}</span>
-                                <button onclick="copyAddress('칠곡군 북삼읍 ${store.address}')" class="text-[10px] text-slate-400 hover:text-slate-600 underline ml-1">
-                                    복사
-                                </button>
-                            </p>
                         </div>
                     </div>
 
@@ -732,19 +725,6 @@
             } else {
                 modal.classList.add('hidden');
             }
-        }
-
-        // Copy Address Toast
-        function copyAddress(text) {
-            playAudio('click');
-            const dummy = document.createElement("textarea");
-            document.body.appendChild(dummy);
-            dummy.value = text;
-            dummy.select();
-            document.execCommand("copy");
-            document.body.removeChild(dummy);
-
-            showToast("주소가 클립보드에 복사되었습니다.");
         }
 
         function showToast(msg) {
