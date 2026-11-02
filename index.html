@@ -83,7 +83,7 @@
                 </button>
             </div>
             <p class="text-xs text-slate-300 px-4 pb-3">
-                우리 동네 49개 참여 점포 맞춤 검색 & 선택이 힘들 때! 맞춤 룰렛 🎰
+                우리 동네 51개 참여 점포 맞춤 검색 & 선택이 힘들 때! 맞춤 룰렛 🎰
             </p>
 
             <!-- Navigation Tabs -->
@@ -117,7 +117,7 @@
                         STEP 1. 업종 분류 선택
                     </h2>
                     <span id="total-count-badge" class="text-[11px] font-bold text-rose-600 bg-rose-50 px-2 py-0.5 rounded-full border border-rose-100">
-                        총 49개 점포
+                        총 51개 점포
                     </span>
                 </div>
 
@@ -164,14 +164,14 @@
                 </p>
             </div>
         
-            <!-- 카테고리 사전 선택 드롭다운 -->
+            <!-- 카테고리 사전 선택 드롭다운(점포수) -->
             <div class="w-full max-w-xs my-1">
                 <label for="roulette-cat-select" class="block text-xs font-bold text-slate-600 mb-1 text-left">
                     🎯 룰렛을 돌릴 업종 카테고리 선택
                 </label>
                 <select id="roulette-cat-select" onchange="onRouletteCatChange()" class="w-full bg-slate-50 border-2 border-slate-900 text-xs font-extrabold rounded-xl py-2.5 px-3 focus:outline-none text-slate-900 shadow-sm">
-                    <option value="all">🎲 전체 무작위 (49곳)</option>
-                    <option value="food">🔴 음식점 (26곳)</option>
+                    <option value="all">🎲 전체 무작위 (51곳)</option>
+                    <option value="food">🔴 음식점 (28곳)</option>
                     <option value="pub">🟣 치킨/주점/야식 (6곳)</option>
                     <option value="cafe">🟡 카페/분식 (3곳)</option>
                     <option value="beauty">🌸 뷰티/미용 (4곳)</option>
@@ -273,12 +273,12 @@
                         행사 내용
                     </h4>
                     <p class="text-slate-600 leading-relaxed">
-                        행사 기간 중 상점가 내 49개 참여 가맹점에서 소비 후 영수증을 지참하여 환급 부스를 방문하시면 온누리상품권을 드립니다!
+                        행사 기간 중 상점가 내 51개 참여 가맹점에서 소비 후 영수증을 지참하여 환급 부스를 방문하시면 온누리상품권을 드립니다!
                     </p>
                 </div>
 
                 <div class="bg-slate-50 p-3 rounded-2xl border border-slate-200 space-y-1">
-                    <p><b>📍 대상:</b> 북삼로인평 골목형상점가 49개 가맹점</p>
+                    <p><b>📍 대상:</b> 북삼로인평 골목형상점가 51개 가맹점</p>
                     <p><b>📅 행사 기간:</b> 26. 11. 21.(토) ~ 11. 30.(월)</p>
                     <p><b>💰 환급 기간:</b> 26. 12. 05.(토) ~ 12.06.(일) 10:00 ~ 17:00</p>
                     <p><b>🚩 환급 장소:</b> 북삼인평근린공원</p>
@@ -304,9 +304,9 @@
 
     <!-- JavaScript Logic -->
     <script>
-        // 1. STORE DATABASE (49 STORES)
+        // 1. STORE DATABASE (51 STORES)
         const stores = [
-            // 음식점 (26)
+            // 음식점 (28)
             { name: '경화추어탕', category: 'food', subcat: '한식/추어탕', address: '북삼로 95', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/2097725747?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291612%26locale%3Dko%26svcName%3Dmap_pcv5' },
             { name: '교동짬뽕', category: 'food', subcat: '중식', address: '북삼로5길 2', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/1889759684?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291612%26locale%3Dko%26svcName%3Dmap_pcv5' },
             { name: '김가네푸줏간화로구이', category: 'food', subcat: '고기/구이', address: '북삼로 150', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/1812806377?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291613%26locale%3Dko%26svcName%3Dmap_pcv5' },
@@ -314,6 +314,7 @@
             { name: '달그릇공방', category: 'food', subcat: '양식', address: '북삼로 50', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/1335336748?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291623%26locale%3Dko%26svcName%3Dmap_pcv5' },
             { name: '대구왕뽈찜', category: 'food', subcat: '해산물/뽈찜', address: '북삼로 146', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/507773923?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291614%26locale%3Dko%26svcName%3Dmap_pcv5' },
             { name: '대한곱창', category: 'food', subcat: '고기/곱창', address: '북삼로 92', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/33214251?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291615%26locale%3Dko%26svcName%3Dmap_pcv5' },
+            { name: '더정담', category: 'food', subcat: '고기/구이', address: '북삼로 120', url: 'https://map.naver.com/p/favorite/myPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/2094231716?c=16.00,0,0,0,dh&at=a&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202611021652%26locale%3Dko%26svcName%3Dmap_pcv5' },
             { name: '만기수산셀프매장', category: 'food', subcat: '해산물/장어', address: '북삼로 58', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/1004464648?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291622%26locale%3Dko%26svcName%3Dmap_pcv5' },
             { name: '미성참숯불갈비', category: 'food', subcat: '고기/구이', address: '북삼로 136', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/563953709?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291622%26locale%3Dko%26svcName%3Dmap_pcv5' },
             { name: '바다양푼이동태탕', category: 'food', subcat: '해산물/동태탕', address: '북삼로 156', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/1492648567?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291623%26locale%3Dko%26svcName%3Dmap_pcv5' },
@@ -330,6 +331,7 @@
             { name: '작은식탁', category: 'food', subcat: '양식', address: '북삼로 52', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/33869400?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291627%26locale%3Dko%26svcName%3Dmap_pcv5' },
             { name: '정백정참숯구이', category: 'food', subcat: '고기/구이', address: '북삼로 88', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/1163822476?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291627%26locale%3Dko%26svcName%3Dmap_pcv5' },
             { name: '참숯폭탄돼지구이', category: 'food', subcat: '고기/구이', address: '북삼로 80-1', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/1781854843?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291628%26locale%3Dko%26svcName%3Dmap_pcv5' },
+            { name: '청주남주동해장국', category: 'food', subcat: '한식/해장국', address: '북삼로 80', url: 'https://map.naver.com/p/favorite/myPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/1488378049?c=16.00,0,0,0,dh&at=a&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202611021651%26locale%3Dko%26svcName%3Dmap_pcv5' },
             { name: '한가네코다리', category: 'food', subcat: '해산물/코다리', address: '북삼로 144', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/1086211345?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291630%26locale%3Dko%26svcName%3Dmap_pcv5' },
             { name: '한돈참숯꼬기', category: 'food', subcat: '고기/구이', address: '북삼로 86', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/37182937?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291630%26locale%3Dko%26svcName%3Dmap_pcv5' },
             { name: '한라숯불꼼장어생삼겹', category: 'food', subcat: '고기/구이', address: '북삼로 41', url: 'https://map.naver.com/p/favorite/sharedPlace/folder/cf1254bfb7e6454faf783fcd0f193333/place/1810086430?c=16.00,0,0,0,dh&placePath=%2Fhome%3Ffrom%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26timestamp%3D202610291630%26locale%3Dko%26svcName%3Dmap_pcv5' },
@@ -370,8 +372,8 @@
 
         // Categories Metadata
         const categoryMeta = {
-            all: { name: '전체', icon: '🏪', count: 49, color: '#1E293B', badgeColor: 'bg-slate-100 text-slate-800' },
-            food: { name: '음식점', icon: '🔴', count: 26, color: '#E53935', badgeColor: 'bg-red-100 text-red-700 border-red-200' },
+            all: { name: '전체', icon: '🏪', count: 51, color: '#1E293B', badgeColor: 'bg-slate-100 text-slate-800' },
+            food: { name: '음식점', icon: '🔴', count: 28, color: '#E53935', badgeColor: 'bg-red-100 text-red-700 border-red-200' },
             pub: { name: '치킨/주점/야식', icon: '🟣', count: 6, color: '#8E24AA', badgeColor: 'bg-purple-100 text-purple-700 border-purple-200' },
             cafe: { name: '카페/분식', icon: '🟡', count: 3, color: '#FFB300', badgeColor: 'bg-amber-100 text-amber-800 border-amber-200' },
             beauty: { name: '뷰티/미용', icon: '🌸', count: 4, color: '#D81B60', badgeColor: 'bg-pink-100 text-pink-700 border-pink-200' },
@@ -513,7 +515,7 @@
                         <div class="text-3xl mb-2">🔍</div>
                         <p class="text-xs text-slate-500 font-medium">검색 결과가 없습니다.</p>
                         <button onclick="clearSearch(); selectCategory('all');" class="mt-2 text-xs text-rose-600 font-bold underline">
-                            전체 49개 점포 보기
+                            전체 51개 점포 보기
                         </button>
                     </div>
                 `;
